@@ -1048,3 +1048,25 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+.role-box {
+  margin-top: 10px;
+}
+
+#roleTitle {
+  font-size: 22px;
+  font-weight: 600;
+  transition: all 0.5s ease;
+}
+
+#roleDesc {
+  margin-top: 8px;
+  padding-left: 18px;
+  color: #666;
+  transition: all 0.5s ease;
+}
+
+#roleDesc li {
+  margin-bottom: 4px;
+  font-size: 14px;
+}
