@@ -211,8 +211,8 @@ const PROJECTS = [
     cats: ['jsbank'],
     tag: 'JS Bank · Onboarding',
     status: 'internal',
-    cover: 'assets/img/portfolio/jsbl/splash.png',
-    gallery: ['assets/img/portfolio/jsbl/splash.png', 'assets/img/portfolio/jsbl/acccountOpening.png'],
+    cover: 'assets/img/portfolio/onewindow/cover.jpg',
+    gallery: ['assets/img/portfolio/onewindow/login.jpg', 'assets/img/portfolio/jsbl/acccountOpening.png', 'assets/img/portfolio/jsbl/splash.png'],
     desc: 'One Window is JS Bank\'s in-branch onboarding app. Branch staff use it to open accounts and create customer records (CIF) on a tablet or phone, without paper forms. It verifies the customer with NADRA (Verisys and fingerprint biometrics, from a USB scanner or the phone camera), fills dynamic e-forms, captures documents and signatures, and submits the case for processing.',
     features: [
       'Guided CIF / account-opening wizard: customer info, contact and next of kin, PEP and demographics, account details, summary',
