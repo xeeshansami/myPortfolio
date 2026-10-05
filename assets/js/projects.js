@@ -170,43 +170,43 @@ const PROJECTS = [
   },
 
   /* ---------- HBL ---------- */
-  L('hbl-hr', 'HBL — People Connect On the GO', 'HBL Bank HR app', 'Habib Bank Limited', 'hbl', 'HBL · HR', 'internal', 'HR/hr.jpg', ['HR/PeopleConnectOnTheGo.jpg'],
-    'HR self-service mobile app for Habib Bank employees, built at HBL’s Innovation & IT Center.', ['Android', 'Kotlin', 'Java']),
-  L('hbl-rda', 'HBL — Roshan Digital Account', 'Tablet application', 'Habib Bank Limited', 'hbl', 'HBL · Banking', 'internal', 'tablet/tablet.PNG', ['tablet/flow_tablet_app_2.jpg'],
-    'Tablet application for Roshan Digital Account customer onboarding at HBL.', ['Android', 'Kotlin', 'Java']),
-  L('hbl-assets', 'HBL — Bank Assets Survey', 'HBL Bank mobile app', 'Habib Bank Limited', 'hbl', 'HBL · Operations', 'internal', 'vlinks/image4.png', [],
-    'Mobile app for surveying HBL bank assets.', ['Android', 'Kotlin']),
-  L('hbl-branch', 'HBL — Branch Survey', 'HBL Bank mobile app', 'Habib Bank Limited', 'hbl', 'HBL · Operations', 'internal', 'aomchecklist/image1.png', [],
-    'Branch survey and checklist mobile app for HBL.', ['Android', 'Kotlin']),
+  L('hbl-hr', 'HBL — People Connect On the GO', 'HR self-service app · HBL employees only', 'Habib Bank Limited', 'hbl', 'HBL · HR', 'internal', 'HR/hr.jpg', ['HR/PeopleConnectOnTheGo.jpg'],
+    'HR self-service mobile app for Habib Bank employees, built at HBL’s Innovation & IT Center. For HBL staff only; not available to the public.', ['Android', 'Kotlin', 'Java']),
+  L('hbl-rda', 'HBL — Roshan Digital Account', 'Branch tablet onboarding app · HBL staff only', 'Habib Bank Limited', 'hbl', 'HBL · Banking', 'internal', 'tablet/tablet.PNG', ['tablet/flow_tablet_app_2.jpg'],
+    'Tablet application that HBL staff use for Roshan Digital Account customer onboarding. For HBL staff only; not available to the public.', ['Android', 'Kotlin', 'Java']),
+  L('hbl-assets', 'HBL — Bank Assets Survey', 'Internal survey app · HBL staff only', 'Habib Bank Limited', 'hbl', 'HBL · Operations', 'internal', 'vlinks/image4.png', [],
+    'Mobile app that HBL staff use to survey bank assets. For HBL staff only; not available to the public.', ['Android', 'Kotlin']),
+  L('hbl-branch', 'HBL — Branch Survey', 'Internal branch checklist app · HBL staff only', 'Habib Bank Limited', 'hbl', 'HBL · Operations', 'internal', 'aomchecklist/image1.png', [],
+    'Branch survey and checklist app used by HBL staff. For HBL staff only; not available to the public.', ['Android', 'Kotlin']),
 
   /* ---------- JS Bank ---------- */
   {
-    id: 'jsbvs',
-    title: 'JS BVS — Biometric Verification',
-    sub: 'Contactless fingerprint verification with the phone camera',
+    id: 'touchless',
+    title: 'JS Bank Touchless Biometric',
+    sub: 'Camera-based NADRA fingerprint verification · JS Bank branch staff only',
     org: 'JS Bank',
     cats: ['jsbank'],
     tag: 'JS Bank · Biometrics',
-    status: 'live',
-    cover: 'assets/img/portfolio/jsbvs/cover.jpg',
-    gallery: ['cnic', 'capture', 'guidance', 'bvs_for'].map(n => `assets/img/portfolio/jsbvs/${n}.jpg`),
-    desc: 'JS Bank\'s public biometric verification app (100K+ downloads). Customers who opened a digital account, such as Zindigi, JS Blink, Asaan Digital, Freelancer Digital or Asaan Digital Remittance, complete NADRA biometric verification from home, as SBP regulations require. There is no branch visit and no fingerprint scanner: the phone\'s rear camera captures the fingerprints and they are verified against NADRA in real time.',
+    status: 'internal',
+    cover: 'assets/img/portfolio/touchless/cover.jpg',
+    gallery: ['assets/img/portfolio/touchless/cover.jpg'],
+    desc: 'An internal app for JS Bank branch users. Staff verify a customer\'s identity against NADRA with the phone\'s own camera, so no separate fingerprint scanner is needed. The app guides the customer to hold up four fingers of the left or right hand (or a thumb). It captures the prints contactlessly and checks their quality, then converts them to the formats NADRA expects and sends them for verification together with the customer\'s CNIC. It was distributed to branches only and is not on the public app stores.',
     features: [
-      'Contactless 4-finger capture from the rear camera, with on-screen hand guidance',
-      'Real-time NADRA biometric verification for digital-account customers',
-      'CNIC entry with consent, then the guided capture flow',
-      'Account-type selection: Zindigi, JS Blink, Asaan Digital and more',
-      'Saves a branch visit inside the 60-day regulatory verification window',
-      'Android and iOS releases'
+      'Contactless 4-finger capture of the left and right hand from the phone camera, with an on-screen hand-shape overlay',
+      'Fingerprint quality scoring (NFIQ) before submission, so poor captures are retaken',
+      'Conversion to WSQ images and fingerprint templates for NADRA biometric verification',
+      'CNIC QR scanning and staff login, with results returned to the branch workflow',
+      'Works alongside One Window account opening as a scanner-free alternative',
+      'In-app update prompts for controlled branch roll-outs'
     ],
-    tech: ['Android (Kotlin / Java)', 'iOS', 'Camera fingerprint SDK', 'NADRA biometric API', 'REST'],
-    links: { play: 'https://play.google.com/store/apps/details?id=com.jsbl.bvs', ios: 'https://apps.apple.com/pk/app/js-bvs/id1618188083' },
-    note: ''
+    tech: ['Android', 'Java', 'Camera / OpenCV', 'NFIQ', 'WSQ', 'NADRA biometric API'],
+    links: {},
+    note: 'For JS Bank branch staff only; not available to the public. More screenshots coming soon.'
   },
   {
     id: 'jsbl-aof',
     title: 'JS Bank One Window — Account Opening',
-    sub: 'In-branch digital account opening with NADRA biometrics',
+    sub: 'In-branch digital account opening · JS Bank staff only',
     org: 'JS Bank',
     cats: ['jsbank'],
     tag: 'JS Bank · Onboarding',
@@ -216,7 +216,7 @@ const PROJECTS = [
     desc: 'One Window is JS Bank\'s in-branch onboarding app. Branch staff use it to open accounts and create customer records (CIF) on a tablet or phone, without paper forms. It verifies the customer with NADRA (Verisys and fingerprint biometrics, from a USB scanner or the phone camera), fills dynamic e-forms, captures documents and signatures, and submits the case for processing.',
     features: [
       'Guided CIF / account-opening wizard: customer info, contact and next of kin, PEP and demographics, account details, summary',
-      'NADRA Verisys and fingerprint biometric verification (Nitgen USB scanner or contactless camera capture)',
+      'NADRA Verisys and fingerprint biometric verification (Nitgen USB scanner, or contactless capture via Touchless Biometric)',
       'Customer signature capture and document / picture upload with on-device processing (OpenCV)',
       'Dynamic e-forms with reusable form components and searchable pick-lists',
       'Existing-to-bank (ETB) case handling, meeting and call scheduling for relationship staff',
@@ -224,7 +224,7 @@ const PROJECTS = [
     ],
     tech: ['Android', 'Kotlin', 'Java', 'Nitgen biometric SDK', 'OpenCV', 'NADRA Verisys', 'REST'],
     links: {},
-    note: 'Internal enterprise app, distributed to JS Bank branches.'
+    note: 'For JS Bank branch staff only; not available to the public.'
   },
 
   /* ---------- Client apps ---------- */

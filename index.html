@@ -158,7 +158,20 @@
     .logos span { font-family: var(--display); font-weight: 600; font-size: .98rem; color: var(--dim); padding: 8px 16px; border: 1px dashed var(--line-2); border-radius: 12px; }
 
     /* ============================== FEATURED ============================== */
-    .feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .feat-grid { display: grid; gap: 40px; }
+    .cg-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; padding-bottom: 12px; margin-bottom: 18px; border-bottom: 1px solid var(--line-2); }
+    .cg-head b { font-family: var(--display); font-size: 1.35rem; display: block; }
+    .cg-head span { color: var(--dim); font-size: .92rem; }
+    .cg-head .when { color: var(--accent-2); font-weight: 600; font-size: .86rem; }
+    .cg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .cg-grid.two { grid-template-columns: repeat(2, 1fr); }
+    .cg-grid .feat .media { aspect-ratio: 4 / 3; }
+    .cg-grid .feat h3 { font-size: 1.05rem; }
+    .cg-grid .feat p { font-size: .86rem; }
+    .cg-grid .feat .body { padding: 16px 16px 18px; }
+    .cg-grid:not(.two) .tag { display: none; }
+    .cg-grid:not(.two) .badges { justify-content: flex-end; }
+    .cg-grid.two .feat .media { aspect-ratio: 16 / 9; }
     .feat { display: grid; grid-template-rows: auto 1fr; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; transition: transform .3s var(--ease), border-color .3s; }
     .feat:hover { transform: translateY(-4px); border-color: var(--line-2); }
     .feat .media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-2); cursor: pointer; }
@@ -400,12 +413,13 @@
     @media (max-width: 1080px) {
       .pgrid { grid-template-columns: repeat(3, 1fr); }
       .skill-grid, .svc-grid { grid-template-columns: repeat(2, 1fr); }
+      .cg-grid { grid-template-columns: repeat(2, 1fr); }
       .links a { padding: 8px 9px; }
     }
     @media (max-width: 900px) {
       .hero-grid, .ai-panel, .exp-grid, .contact { grid-template-columns: 1fr; }
       .hero-card { max-width: 360px; }
-      .feat-grid { grid-template-columns: 1fr; }
+      .cg-grid, .cg-grid.two { grid-template-columns: repeat(2, 1fr); }
       .pgrid { grid-template-columns: repeat(2, 1fr); }
       .side { position: static; }
       .process { grid-template-columns: repeat(2, 1fr); }
@@ -429,7 +443,7 @@
       section { padding: 64px 0; }
       #hero { padding-top: 108px; }
       .hero-stats { grid-template-columns: repeat(2, auto); }
-      .pgrid, .skill-grid, .svc-grid, .process, .cform .two { grid-template-columns: 1fr; }
+      .pgrid, .skill-grid, .svc-grid, .process, .cform .two, .cg-grid, .cg-grid.two { grid-template-columns: 1fr; }
       .search { flex-basis: 100%; }
       .ai-fab span { display: none; }
       .ai-fab { padding: 14px; }
@@ -515,9 +529,9 @@
     <section id="work">
       <div class="wrap">
         <div class="sec-head rv">
-          <span class="kicker">Featured case studies</span>
-          <h2>Recent work, <span class="grad-text">live in production</span></h2>
-          <p>Work from my roles at the State Bank of Pakistan, JS Bank and HBL. Client platforms are marked separately as <a href="#paxees" style="color:var(--accent-2);font-weight:600">Paxees</a>, my own studio. Open any project for screenshots, the full story, the stack and live links.</p>
+          <span class="kicker">Career work</span>
+          <h2>What I've built, <span class="grad-text">role by role</span></h2>
+          <p>Apps and platforms I built at each employer, newest first. Open any project for screenshots, the full story and the tech stack. Client work from my own studio, <a href="#paxees" style="color:var(--accent-2);font-weight:600">Paxees</a>, is listed separately below.</p>
         </div>
         <div class="feat-grid" id="featGrid"></div>
       </div>
@@ -529,6 +543,7 @@
         <div class="sec-head rv">
           <span class="kicker">All projects</span>
           <h2>Everything I've shipped</h2>
+          <p>Career projects first, then client apps and websites from Paxees. Filter by company or product type, or search.</p>
         </div>
         <div class="work-tools rv">
           <div class="filters" id="filters" role="toolbar" aria-label="Filter projects"></div>
@@ -601,7 +616,7 @@
               <div class="job-top"><h3>Senior Software Engineer — Native Android | Flutter</h3><span class="when">Oct 2023 – Mar 2026</span></div>
               <div class="org">JS Bank — Innovation &amp; IT Center</div>
               <ul>
-                <li>Built <a href="#project-jsbvs" class="plink">JS BVS</a>, a contactless camera-based NADRA fingerprint verification app on Play and the App Store with 100K+ downloads, and the <a href="#project-jsbl-aof" class="plink">One Window</a> in-branch account-opening app (Verisys, biometrics, e-forms, signatures).</li>
+                <li>Built staff-only apps for JS Bank branches: <a href="#project-touchless" class="plink">Touchless Biometric</a>, an app that verifies customers' fingerprints against NADRA using the phone camera, with no scanner needed. Also built the <a href="#project-jsbl-aof" class="plink">One Window</a> in-branch account-opening app (Verisys, biometrics, e-forms, signatures).</li>
                 <li>Developed cross-platform Flutter/Dart apps with responsive UIs (GetX, Lottie) and Firebase integration.</li>
                 <li>Integrated JWT authentication, Google/Facebook login and real-time sync with Firebase.</li>
                 <li>Shipped AI features (lip-sync, speech-to-text) with Wav2Lip, RVC + VITS and FastAPI on CUDA.</li>
@@ -612,7 +627,7 @@
               <div class="job-top"><h3>Senior Software Application Developer</h3><span class="when">Jun 2021 – Oct 2023</span></div>
               <div class="org">Habib Bank Limited — Innovation &amp; IT Center</div>
               <ul>
-                <li>Built enterprise Android apps in Kotlin and Java: <a href="#project-hbl-hr" class="plink">People Connect On the GO</a> (HR), <a href="#project-hbl-rda" class="plink">Roshan Digital Account</a> (tablet onboarding), <a href="#project-hbl-assets" class="plink">Bank Assets Survey</a> and <a href="#project-hbl-branch" class="plink">Branch Survey</a>.</li>
+                <li>Built internal, staff-only Android apps for HBL employees in Kotlin and Java: <a href="#project-hbl-hr" class="plink">People Connect On the GO</a> (HR), <a href="#project-hbl-rda" class="plink">Roshan Digital Account</a> (tablet onboarding), <a href="#project-hbl-assets" class="plink">Bank Assets Survey</a> and <a href="#project-hbl-branch" class="plink">Branch Survey</a>.</li>
                 <li>Worked with backend teams on data sync and performance, and applied strong security practices for user privacy.</li>
               </ul>
             </article>

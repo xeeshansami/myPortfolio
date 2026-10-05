@@ -8,11 +8,10 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const enc = u => encodeURI(u);
-  const STATUS = { live: 'Live', soon: 'Launching soon', dev: 'Under development', internal: 'Enterprise', delivered: 'Delivered', private: 'Private repo' };
+  const STATUS = { live: 'Live', soon: 'Launching soon', dev: 'Under development', internal: 'Staff only', delivered: 'Delivered', private: 'Private repo' };
   // Filter keys may list several categories (space-separated) — a project matches if it has any of them.
   const CATS = [['*', 'All'], ['sbp', 'SBP Apps'], ['hbl', 'HBL Apps'], ['jsbank', 'JS Bank Apps'], ['dusky', 'Dusky Solutions'], ['freelance', 'Freelance Clients']];
   const TYPES = [['business', 'Business & ERP'], ['commerce', 'E-Commerce & Retail'], ['education healthcare', 'Education & Healthcare'], ['web', 'Websites & Web Portals'], ['media', 'Media & Utility Apps'], ['tools', 'Developer Tools']];
-  const FEATURED = ['sbp-uma', 'sunwai', 'jsbvs', 'jsbl-aof', 'therapyhome', 'sareena', 'smelevate', 'pytools'];
   const inCat = (cats, f) => f === '*' || f.split(' ').some(k => cats.includes(k));
   const ICON = {
     web: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
@@ -55,8 +54,14 @@
   }
   const linksHtml = (p, small) => { const l = p.links || {}; return linkBtn('web', l.web, small ? 'Live site' : l.webLabel, small) + linkBtn('play', l.play, null, small) + linkBtn('ios', l.ios, null, small); };
 
-  /* ---------------- Featured ---------------- */
-  $('#featGrid').innerHTML = FEATURED.map(id => {
+  /* ---------------- Career work (grouped by employer, newest first) ---------------- */
+  const CAREER = [
+    { org: 'State Bank of Pakistan', role: 'Senior Application Engineer — Mobile', when: 'Mar 2026 – Present', ids: ['sbp-uma', 'sunwai', 'smelevate', 'pytools'] },
+    { org: 'JS Bank', role: 'Senior Software Engineer — Android | Flutter', when: 'Oct 2023 – Mar 2026', ids: ['touchless', 'jsbl-aof'] },
+    { org: 'Habib Bank Limited (HBL)', role: 'Senior Software Application Developer', when: 'Jun 2021 – Oct 2023', ids: ['hbl-hr', 'hbl-rda', 'hbl-assets', 'hbl-branch'] },
+    { org: 'Dusky Solutions', role: 'Android Application Developer', when: 'Nov 2018 – Mar 2020', ids: ['khutalkhair', 'gatak', 'youniform'] }
+  ];
+  const featCard = id => {
     const i = byId(id), p = PROJECTS[i]; if (!p) return '';
     const short = p.desc.split('. ').slice(0, 2).join('. ').replace(/\.?$/, '.');
     return `<article class="feat rv">
@@ -65,18 +70,25 @@
         <img src="${enc(p.cover)}" alt="${esc(p.title)} screenshots" loading="lazy">
       </div>
       <div class="body">
-        <span class="org">${esc(p.org)}</span>
         <h3>${esc(p.title)}</h3>
         <p>${esc(short)}</p>
-        <div class="chips">${(p.tech || []).slice(0, 6).map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>
+        <div class="chips">${(p.tech || []).slice(0, 5).map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>
         <div class="actions"><button class="btn btn-primary" data-i="${i}">${ICON.info}Case study</button>${linksHtml(p, true)}</div>
       </div>
     </article>`;
-  }).join('');
+  };
+  $('#featGrid').innerHTML = CAREER.map(g => `
+    <div class="cgroup">
+      <div class="cg-head rv"><div><b>${esc(g.org)}</b><span>${esc(g.role)}</span></div><span class="when">${esc(g.when)}</span></div>
+      <div class="cg-grid ${g.ids.length === 2 ? 'two' : ''}">${g.ids.map(featCard).join('')}</div>
+    </div>`).join('');
 
   /* ---------------- All projects ---------------- */
   const pgrid = $('#pgrid');
-  pgrid.innerHTML = PROJECTS.map((p, i) => `
+  const RANK = ['sbp', 'tools', 'jsbank', 'hbl', 'dusky', 'freelance'];
+  const rank = p => { const r = RANK.findIndex(k => p.cats.includes(k)); return r < 0 ? RANK.length : r; };
+  const ORDER = PROJECTS.map((p, i) => i).sort((a, b) => rank(PROJECTS[a]) - rank(PROJECTS[b]) || a - b);
+  pgrid.innerHTML = ORDER.map(i => [PROJECTS[i], i]).map(([p, i]) => `
     <button class="pcard" data-i="${i}" data-cats="${p.cats.join(' ')}" data-text="${esc((p.title + ' ' + p.sub + ' ' + p.org + ' ' + p.tag + ' ' + (p.tech || []).join(' ') + ' ' + p.desc).toLowerCase())}">
       <span class="pimg"><span class="badges"><span class="tag">${esc(p.tag)}</span><span class="status ${p.status}">${STATUS[p.status]}</span></span>
         <img src="${enc(p.cover)}" alt="" loading="lazy"></span>
@@ -203,8 +215,8 @@
       a: () => { const live = PROJECTS.filter(p => p.status === 'live'); return `These are live right now:<ul>${live.map(p => `<li>${pLink(p.id)}: ${esc(p.sub)}</li>`).join('')}</ul>Launching soon: ${pLink('sbp-uma')}. In development: ${pLink('smelevate')}.`; } },
     { k: ['sbp', 'state bank', 'central bank', 'current', 'now', 'present'],
       a: () => `Zeeshan has been a <b>Senior Application Engineer (Mobile)</b> at the State Bank of Pakistan since March 2026. His work there:<ul><li>${pLink('sbp-uma')}: lead developer; Flutter, AskSBP AI chatbot, VAPT-hardened</li><li>${pLink('sunwai')}: complaint app (live), plus an ASP.NET Core web portal</li><li>${pLink('smelevate')}: solution and security architecture</li><li>${pLink('pytools')}: internal developer tooling</li></ul>` },
-    { k: ['bank', 'banking', 'fintech', 'finance', 'hbl', 'habib', 'js bank', 'jsbl', 'biometric', 'biometrics', 'nadra', 'fingerprint', 'bvs'],
-      a: () => `He has 5+ years in banking technology across <b>three banks</b>:<ul><li><b>State Bank of Pakistan</b> (2026–now): the central-bank app, Sunwai and SMElevate</li><li><b>JS Bank</b> (2023–2026): ${pLink('jsbvs')} (camera-based NADRA biometrics, 100K+ downloads), ${pLink('jsbl-aof')}, and AI lip-sync / speech features</li><li><b>HBL</b> (2021–2023): ${pLink('hbl-hr')}, ${pLink('hbl-rda')}, branch and asset survey apps</li></ul>` },
+    { k: ['bank', 'banking', 'fintech', 'finance', 'hbl', 'habib', 'js bank', 'jsbl', 'biometric', 'biometrics', 'nadra', 'fingerprint', 'touchless'],
+      a: () => `He has 5+ years in banking technology across <b>three banks</b>:<ul><li><b>State Bank of Pakistan</b> (2026–now): the central-bank app, Sunwai and SMElevate</li><li><b>JS Bank</b> (2023–2026): ${pLink('touchless')} (camera-based NADRA fingerprint verification for branches), ${pLink('jsbl-aof')}, and AI lip-sync / speech features</li><li><b>HBL</b> (2021–2023): ${pLink('hbl-hr')}, ${pLink('hbl-rda')}, branch and asset survey apps</li></ul>` },
     { k: ['ai', 'ml', 'llm', 'chatbot', 'gpt', 'claude', 'machine learning', 'artificial', 'ocr', 'speech', 'voice', 'nlp', 'model'],
       a: () => `AI work that shipped in real products:<ul><li><b>AskSBP chatbot</b> in ${pLink('sbp-uma')}: voice input, text-to-speech, reasoning disclosure</li><li><b>Invoice OCR / PDF parsing</b> in ${pLink('sareena')}: Google ML Kit, preview time cut from ~10s to ~0.5s</li><li><b>Lip-sync and voice AI</b> at JS Bank: Wav2Lip and RVC + VITS served with FastAPI on CUDA</li><li>Daily use of AI coding agents (Claude Code, Copilot)</li></ul>` },
     { k: ['security', 'secure', 'vapt', 'pinning', 'encryption', 'root', 'jailbreak', 'owasp', 'pentest'],
