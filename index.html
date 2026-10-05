@@ -6,9 +6,14 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Mohammad Zeeshan — Full-Stack Mobile Engineer</title>
   <meta name="description"
-    content="Mohammad Zeeshan (Xeeshan SaMi) — Full-Stack Mobile Engineer with 9+ years in Flutter, Android, iOS, AI/ML and enterprise banking systems.">
+    content="Mohammad Zeeshan (Xeeshan SaMi) — Senior Application Engineer at the State Bank of Pakistan. 9+ years building Flutter, Android, iOS, web portals and AI-powered enterprise banking apps for SBP, HBL, JS Bank and global clients.">
   <meta name="keywords"
-    content="Flutter, Android, iOS, AI, Machine Learning, Mobile Developer, Karachi, State Bank of Pakistan">
+    content="Flutter, Android, iOS, ASP.NET Core, React, Node.js, Python, AI, Mobile Developer, Karachi, State Bank of Pakistan, HBL, JS Bank, Sunwai, Portfolio">
+  <meta property="og:title" content="Mohammad Zeeshan — Full-Stack Mobile Engineer">
+  <meta property="og:description" content="Senior Application Engineer at the State Bank of Pakistan · Flutter, Android, iOS, web portals & AI. Live apps, client portals and case studies.">
+  <meta property="og:image" content="https://xeeshansami.github.io/myPortfolio/assets/img/portfolio/sbp-uma/cover.jpg">
+  <meta property="og:url" content="https://xeeshansami.github.io/myPortfolio/">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -282,6 +287,8 @@
     .titem ul.duties li { position: relative; padding-left: 18px; font-size: .88rem; color: var(--text-dim); }
     .titem ul.duties li::before { content: "–"; position: absolute; left: 0; color: var(--accent); }
     .titem .meta { margin-top: 8px; font-size: .8rem; color: var(--text-faint); }
+    a.plink { color: var(--accent-2); font-weight: 600; border-bottom: 1px dashed currentColor; }
+    a.plink:hover { color: var(--accent); }
     .titem .meta div { display: flex; gap: 6px; align-items: center; }
 
     .award-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-bottom: 12px; }
@@ -312,38 +319,74 @@
 
     .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .pcard {
-      position: relative; border-radius: var(--radius); overflow: hidden;
-      border: 1px solid var(--border); background: var(--surface-solid);
+      position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer;
+      border: 1px solid var(--border); background: var(--surface-solid); text-align: left;
       box-shadow: var(--shadow); transition: transform .35s var(--ease), border-color .35s var(--ease);
-      aspect-ratio: 4 / 3;
+      display: flex; flex-direction: column; font: inherit; color: inherit; padding: 0; width: 100%;
     }
-    .pcard:hover { transform: translateY(-6px); border-color: var(--accent); }
-    .pcard img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
-    .pcard:hover img { transform: scale(1.07); }
-    .pcard .overlay {
-      position: absolute; inset: 0; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end;
-      background: linear-gradient(to top, rgba(6, 6, 14, .92) 0%, rgba(6, 6, 14, .55) 45%, transparent 100%);
-      opacity: 0; transition: opacity .35s var(--ease);
-    }
-    .pcard:hover .overlay { opacity: 1; }
-    .pcard .overlay h4 { color: #fff; font-family: var(--font-display); font-size: 1.05rem; }
-    .pcard .overlay p { color: rgba(255, 255, 255, .8); font-size: .84rem; margin-top: 2px; }
-    .pcard .plinks { display: flex; gap: 10px; margin-top: 14px; }
-    .pcard .plinks a {
-      width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center;
-      background: rgba(255, 255, 255, .12); backdrop-filter: blur(6px); color: #fff; border: 1px solid rgba(255, 255, 255, .2);
-      transition: all .2s var(--ease);
-    }
-    .pcard .plinks a:hover { background: var(--accent); border-color: var(--accent); }
-    .pcard .plinks svg { width: 18px; height: 18px; }
-    .pcard .tag { position: absolute; top: 12px; left: 12px; z-index: 2; font-size: .68rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; background: rgba(0,0,0,.55); color: #fff; padding: 4px 10px; border-radius: 100px; backdrop-filter: blur(6px); opacity: 0; transition: opacity .35s; }
-    .pcard:hover .tag { opacity: 1; }
+    .pcard:hover, .pcard:focus-visible { transform: translateY(-6px); border-color: var(--accent); outline: none; }
+    .pcard .pimg { aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-2); position: relative; width: 100%; }
+    .pcard .pimg img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+    .pcard:hover .pimg img { transform: scale(1.06); }
+    .pcard .pinfo { padding: 16px 18px 18px; display: grid; gap: 4px; }
+    .pcard .porg { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-2); }
+    .pcard h4 { font-family: var(--font-display); font-size: 1rem; line-height: 1.3; }
+    .pcard .pinfo p { color: var(--text-dim); font-size: .86rem; }
+    .pcard .pmore { margin-top: 6px; font-size: .82rem; font-weight: 600; color: var(--accent); }
+    .pcard .tag { position: absolute; top: 12px; left: 12px; z-index: 2; font-size: .68rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; background: rgba(0,0,0,.6); color: #fff; padding: 4px 10px; border-radius: 100px; backdrop-filter: blur(6px); }
+    .pcard .status { position: absolute; top: 12px; right: 12px; z-index: 2; }
 
-    /* Lightbox */
-    .lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(4, 4, 10, .92); backdrop-filter: blur(8px); display: none; place-items: center; padding: 30px; }
-    .lightbox.open { display: grid; }
-    .lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 14px; box-shadow: var(--shadow); }
-    .lightbox .close { position: absolute; top: 22px; right: 26px; width: 46px; height: 46px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border-strong); color: #fff; cursor: pointer; font-size: 1.4rem; display: grid; place-items: center; }
+    /* Status badges */
+    .status { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; color: #fff; white-space: nowrap; }
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .status.live { background: #15803d; }
+    .status.soon { background: #1d4ed8; }
+    .status.dev { background: #b45309; }
+    .status.internal { background: #4338ca; }
+    .status.delivered { background: #475569; }
+    .status.private { background: #7e22ce; }
+
+    /* Project modal */
+    .pmodal { position: fixed; inset: 0; z-index: 200; background: rgba(4, 4, 10, .82); backdrop-filter: blur(8px); display: none; place-items: center; padding: 24px 16px; overflow-y: auto; }
+    .pmodal.open { display: grid; grid-template-columns: minmax(0, 1fr); }
+    .pm-box { position: relative; width: 100%; max-width: 1080px; min-width: 0; margin: 0 auto; background: var(--surface-solid); border: 1px solid var(--border-strong); border-radius: 22px; box-shadow: var(--shadow); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); overflow: hidden; }
+    .pm-close { position: absolute; top: 14px; right: 14px; z-index: 3; width: 40px; height: 40px; border-radius: 12px; background: var(--surface-solid); border: 1px solid var(--border-strong); color: var(--text); cursor: pointer; font-size: 1.1rem; display: grid; place-items: center; }
+    .pm-close:hover { border-color: var(--accent); color: var(--accent); }
+    .pm-gallery { background: var(--bg); padding: 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    .pm-main { flex: 1; min-height: 320px; display: grid; place-items: center; border-radius: 14px; overflow: hidden; background: var(--bg-2); border: 1px solid var(--border); }
+    .pm-main img { max-width: 100%; max-height: 68vh; object-fit: contain; }
+    .pm-thumbs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+    .pm-thumbs:empty { display: none; }
+    .pm-thumbs button { flex: 0 0 auto; width: 64px; height: 64px; border-radius: 10px; overflow: hidden; border: 2px solid var(--border); background: var(--bg-2); cursor: pointer; padding: 0; opacity: .65; transition: all .2s; }
+    .pm-thumbs button.active, .pm-thumbs button:hover { border-color: var(--accent); opacity: 1; }
+    .pm-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+    .pm-body { padding: 30px 28px 28px; overflow-y: auto; max-height: 86vh; }
+    .pm-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 10px; padding-right: 44px; }
+    .pm-org { font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-2); }
+    .pm-body h3 { font-family: var(--font-display); font-size: 1.4rem; line-height: 1.2; }
+    .pm-sub { color: var(--accent-3); font-weight: 600; font-size: .92rem; margin-top: 6px; }
+    .pm-desc { color: var(--text-dim); font-size: .94rem; margin-top: 14px; }
+    .pm-feats { display: grid; gap: 6px; margin-top: 14px; }
+    .pm-feats:empty { display: none; }
+    .pm-feats li { position: relative; padding-left: 20px; font-size: .88rem; color: var(--text-dim); }
+    .pm-feats li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+    .pm-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .pm-tech span { font-size: .76rem; padding: 4px 10px; border-radius: 100px; background: var(--surface); border: 1px solid var(--border-strong); color: var(--text); }
+    .pm-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .pm-links:empty { display: none; }
+    .pm-links .btn { padding: 10px 16px; font-size: .86rem; }
+    .pm-links .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .pm-links .btn.disabled { opacity: .6; cursor: default; pointer-events: none; }
+    .pm-note { margin-top: 14px; font-size: .82rem; color: var(--text-faint); }
+    .pm-note:empty { display: none; }
+    body.modal-open { overflow: hidden; }
+    @media (max-width: 860px) {
+      .pm-box { grid-template-columns: minmax(0, 1fr); }
+      .pm-close { position: fixed; top: 34px; right: 26px; box-shadow: var(--shadow); }
+      .pm-main { min-height: 220px; }
+      .pm-main img { max-height: 48vh; }
+      .pm-body { max-height: none; padding: 22px 20px 24px; }
+    }
 
     /* ============================================================
        SERVICES
@@ -472,7 +515,7 @@
   <section id="hero">
     <div class="container hero-grid">
       <div class="hero">
-        <span class="hero-badge"><span class="dot"></span> Available for enterprise & mobile projects</span>
+        <span class="hero-badge"><span class="dot"></span> Senior Application Engineer @ State Bank of Pakistan</span>
         <h1>Mohammad <span class="grad">Zeeshan</span></h1>
         <p class="sub"><b>Full-Stack Mobile Engineer</b> — AI &amp; Enterprise Systems · <b>9+ years</b> since 2016</p>
         <div class="role-box">
@@ -497,7 +540,7 @@
         <div class="ring"></div>
         <img src="assets/img/profile-img.jpg" alt="Mohammad Zeeshan" class="hero-photo">
         <div class="float-card a"><b class="g">9+</b>Years Experience</div>
-        <div class="float-card b"><b class="g">27+</b>Apps Shipped</div>
+        <div class="float-card b"><b class="g">32+</b>Apps &amp; Portals</div>
       </div>
     </div>
   </section>
@@ -506,8 +549,8 @@
   <section id="facts" style="padding-top:0;">
     <div class="container">
       <div class="stats-row reveal">
-        <div class="stat"><div class="num" data-count="22">0</div><p>Happy Clients</p></div>
-        <div class="stat"><div class="num" data-count="27">0</div><p>Projects Shipped</p></div>
+        <div class="stat"><div class="num" data-count="24">0</div><p>Happy Clients</p></div>
+        <div class="stat"><div class="num" data-count="32">0</div><p>Apps &amp; Portals</p></div>
         <div class="stat"><div class="num" data-count="1056">0</div><p>Hours of Support</p></div>
         <div class="stat"><div class="num" data-count="9">0</div><p>Years Experience</p></div>
       </div>
@@ -520,243 +563,43 @@
       <div class="section-head reveal">
         <span class="eyebrow">Selected Work</span>
         <h2>Portfolio &amp; <span>Projects</span></h2>
-        <p>9+ years building mobile applications end-to-end — from requirement analysis and software design through coding, testing and maintenance across iOS, Android and Flutter.</p>
+        <p>Central-bank, commercial-bank and client work: live mobile apps, web portals and developer tools. Tap any project for screenshots, the full description, the tech stack and live links (Google Play, App Store and web).</p>
       </div>
-      <div class="pfilters reveal">
+      <div class="pfilters reveal" id="pfilters">
         <button class="active" data-filter="*">All</button>
-        <button data-filter="banking">Banking &amp; Enterprise</button>
-        <button data-filter="business">Business &amp; E-Commerce</button>
-        <button data-filter="tools">Tools &amp; Media</button>
+        <button data-filter="sbp">SBP Apps</button>
+        <button data-filter="hbl">HBL Apps</button>
+        <button data-filter="jsbank">JS Bank Apps</button>
+        <button data-filter="client">Client Apps</button>
+        <button data-filter="web">Web Portals</button>
+        <button data-filter="python">Python &amp; Dev Tools</button>
+        <button data-filter="utility">Utility &amp; Media</button>
       </div>
-      <div class="pgrid reveal" id="pgrid">
-
-        <div class="pcard" data-cat="banking">
-          <span class="tag">Banking</span>
-          <img src="assets/img/portfolio/sbp/SpashSBP.jpeg" alt="SBP Unified App">
-          <div class="overlay"><h4>SBP Unified App</h4><p>SBP Unified Application</p>
-            <div class="plinks"><a href="assets/img/portfolio/sbp/DashboardSBP.jpeg" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.sbp.unified_app" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="banking">
-          <span class="tag">Banking</span>
-          <img src="assets/img/portfolio/sbp/sunwai.jpg" alt="SUNWAI">
-          <div class="overlay"><h4>SUNWAI</h4><p>Customer Complaint Application</p>
-            <div class="plinks"><a href="assets/img/portfolio/sbp/sunwai.jpg" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.sbp.sbp_complaints_management&hl=en" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">CRM</span>
-          <img src="assets/img/portfolio/realtorscrm/image1.jpeg" alt="Realtors CRM">
-          <div class="overlay"><h4>Realtors CRM</h4><p>Flutter iOS/Android Application</p>
-            <div class="plinks"><a href="assets/img/portfolio/realtorscrm/realtorscrm.jpeg" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.amr.realtorscrm" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">Education</span>
-          <img src="assets/img/portfolio/offtheschool/image1.jpeg" alt="Off The School">
-          <div class="overlay"><h4>Off The School</h4><p>Flutter iOS/Android Application</p>
-            <div class="plinks"><a href="assets/img/portfolio/offtheschool/offtheschool.jpeg" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">Business</span>
-          <img src="assets/img/portfolio/dawngroup/image10.jpeg" alt="Dawn Group">
-          <div class="overlay"><h4>Dawn Group</h4><p>Flutter iOS/Android Application</p>
-            <div class="plinks"><a href="assets/img/portfolio/dawngroup/dawngroup.jpeg" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="banking">
-          <span class="tag">Banking</span>
-          <img src="assets/img/portfolio/jsbl/splash.png" alt="JS Bank Account Opening">
-          <div class="overlay"><h4>JS Bank — Account Opening</h4><p>Tablet Account Opening Application</p>
-            <div class="plinks"><a href="assets/img/portfolio/jsbl/acccountOpening.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="banking">
-          <span class="tag">Banking · HR</span>
-          <img src="assets/img/portfolio/HR/hr.jpg" alt="HBL People Connect">
-          <div class="overlay"><h4>HBL — People Connect On the GO</h4><p>HBL Bank HR App</p>
-            <div class="plinks"><a href="assets/img/portfolio/HR/PeopleConnectOnTheGo.jpg" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.hbl.hr" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="banking">
-          <span class="tag">Banking</span>
-          <img src="assets/img/portfolio/tablet/tablet.PNG" alt="HBL Roshan Digital">
-          <div class="overlay"><h4>HBL — Roshan Digital Account</h4><p>Tablet Application</p>
-            <div class="plinks"><a href="assets/img/portfolio/tablet/flow_tablet_app_2.jpg" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="banking">
-          <span class="tag">Banking</span>
-          <img src="assets/img/portfolio/vlinks/image4.png" alt="HBL Assets Survey">
-          <div class="overlay"><h4>HBL — Bank Assets Survey</h4><p>HBL Bank Mobile App</p>
-            <div class="plinks"><a href="assets/img/portfolio/vlinks/image4.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="banking">
-          <span class="tag">Banking</span>
-          <img src="assets/img/portfolio/aomchecklist/image1.png" alt="HBL Branch Survey">
-          <div class="overlay"><h4>HBL — Branch Survey</h4><p>HBL Bank Mobile App</p>
-            <div class="plinks"><a href="assets/img/portfolio/aomchecklist/image1.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">Coupons</span>
-          <img src="assets/img/portfolio/tengram/tengram.png" alt="Tengram">
-          <div class="overlay"><h4>Tengram</h4><p>Coupon App</p>
-            <div class="plinks"><a href="assets/img/portfolio/tengram/tengramflow.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.dk.tengerms" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">E-Commerce</span>
-          <img src="assets/img/portfolio/tcc/tcc.png" alt="The Clone Conservatory">
-          <div class="overlay"><h4>The Clone Conservatory</h4><p>Plants E-Commerce App</p>
-            <div class="plinks"><a href="assets/img/portfolio/tcc/tccdarkflow.jpeg" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">Pharmacy</span>
-          <img src="assets/img/portfolio/ags/ags.PNG" alt="AGS">
-          <div class="overlay"><h4>AGS Multi Order Booking</h4><p>Pharmacy App</p>
-            <div class="plinks"><a href="assets/img/portfolio/ags/agsflow.PNG" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.agsadil.agssalesandroidclientorderdocter" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">Business</span>
-          <img src="assets/img/portfolio/bidfeed/Bidfeed.PNG" alt="Bidfeed">
-          <div class="overlay"><h4>Bidfeed Home</h4><p>Bidfeed Home Mobile Application</p>
-            <div class="plinks"><a href="assets/img/portfolio/bidfeed/Bidfeed.PNG" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.retailak.bidfoods" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">E-Commerce</span>
-          <img src="assets/img/portfolio/youniform/youniform.JPEG" alt="YouniForm">
-          <div class="overlay"><h4>YouniForm</h4><p>E-Commerce App</p>
-            <div class="plinks"><a href="assets/img/portfolio/youniform/youniform.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.youniform.android" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">Reading</span>
-          <img src="assets/img/portfolio/UrduNovels/urduNovels.JPEG" alt="UrduNovels">
-          <div class="overlay"><h4>UrduNovels</h4><p>Novels App</p>
-            <div class="plinks"><a href="assets/img/portfolio/UrduNovels/urduNovels.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.softperl.urdunovelscollection" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">E-Commerce</span>
-          <img src="assets/img/portfolio/gatak/screen-0.jpg" alt="Gatak Alfazaa">
-          <div class="overlay"><h4>جاتك الفزعه</h4><p>E-Commerce Service App</p>
-            <div class="plinks"><a href="assets/img/portfolio/gatak/Gatak.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">E-Commerce</span>
-          <img src="assets/img/portfolio/khutalkhair/zee1.png" alt="Khuta Alkhair">
-          <div class="overlay"><h4>خطى الخير</h4><p>E-Commerce Service App</p>
-            <div class="plinks"><a href="assets/img/portfolio/khutalkhair/khuatlkhair.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=sa.khuta.alkhair&hl=ur&gl=US" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="tools">
-          <span class="tag">Tool</span>
-          <img src="assets/img/portfolio/vpn/vpnapp.PNG" alt="VPNx">
-          <div class="overlay"><h4>VPNx</h4><p>Tool App</p>
-            <div class="plinks"><a href="assets/img/portfolio/vpn/vpn.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.smart.vpnx" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="tools">
-          <span class="tag">Records</span>
-          <img src="assets/img/portfolio/bihar/app.PNG" alt="Bihar Land Records">
-          <div class="overlay"><h4>Bihar Land Records</h4><p>बिहार भूमि · Khatian App</p>
-            <div class="plinks"><a href="assets/img/portfolio/bihar/flow.PNG" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.bihar.land_records" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="tools">
-          <span class="tag">Media</span>
-          <img src="assets/img/portfolio/Downloader2/app.PNG" alt="Videotor Editor">
-          <div class="overlay"><h4>Videotor Video Editor</h4><p>Media Tool App</p>
-            <div class="plinks"><a href="assets/img/portfolio/Downloader2/flow.PNG" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=video.editor.videoeditor.videomaster" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="tools">
-          <span class="tag">Media</span>
-          <img src="assets/img/portfolio/Downloader3/app.PNG" alt="HD Video Downloader">
-          <div class="overlay"><h4>All Video HD Downloader</h4><p>Media Tool App</p>
-            <div class="plinks"><a href="assets/img/portfolio/Downloader3/flow.PNG" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.downloader.videodownloader.hdvideo.anyvideodownloader" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="business">
-          <span class="tag">Business</span>
-          <img src="assets/img/portfolio/relainceEngineering/relainceEng.JPEG" alt="Reliance Engineering">
-          <div class="overlay"><h4>Reliance Engineering</h4><p>Business App</p>
-            <div class="plinks"><a href="assets/img/portfolio/relainceEngineering/relianceEng.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="tools">
-          <span class="tag">Movies</span>
-          <img src="assets/img/portfolio/PrimeFlix/primeFlix.JPEG" alt="PrimeFlix">
-          <div class="overlay"><h4>PrimeFlix</h4><p>Movie App</p>
-            <div class="plinks"><a href="assets/img/portfolio/PrimeFlix/primeFlix.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.rcloud.netflix" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="tools">
-          <span class="tag">Media</span>
-          <img src="assets/img/portfolio/mediaplayer/1.png" alt="Media Player">
-          <div class="overlay"><h4>Media Player</h4><p>Media App</p>
-            <div class="plinks"><a href="assets/img/portfolio/mediaplayer/mediaplayer.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="tools">
-          <span class="tag">Media</span>
-          <img src="assets/img/portfolio/convertor/2019_11_13_11_07_IMG_1541.JPG" alt="Convertor">
-          <div class="overlay"><h4>Convertor</h4><p>Media Tool App</p>
-            <div class="plinks"><a href="assets/img/portfolio/convertor/convertor.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="tools">
-          <span class="tag">Media</span>
-          <img src="assets/img/portfolio/recorder/Android splash.png" alt="Call Recorder">
-          <div class="overlay"><h4>Call Recorder</h4><p>Media Tool App</p>
-            <div class="plinks"><a href="assets/img/portfolio/recorder/recoreder.png" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-        <div class="pcard" data-cat="tools">
-          <span class="tag">Media</span>
-          <img src="assets/img/portfolio/Downloader/sp cahnge.jpg" alt="MX Video Downloader">
-          <div class="overlay"><h4>MX Video Downloader</h4><p>Media Tool App</p>
-            <div class="plinks"><a href="assets/img/portfolio/Downloader/MX-Video-Downloder-workflow.jpg" class="lb" aria-label="Preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a><a href="app_details.html" target="_blank" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-        </div>
-
-      </div>
+      <div class="pgrid reveal" id="pgrid"><!-- rendered from PROJECTS (see script) --></div>
+      <noscript><p style="text-align:center;color:var(--text-dim)">Enable JavaScript to browse the project gallery.</p></noscript>
     </div>
   </section>
+
+  <!-- Project details modal -->
+  <div class="pmodal" id="pmodal" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <div class="pm-box">
+      <button class="pm-close" id="pmClose" aria-label="Close">✕</button>
+      <div class="pm-gallery">
+        <div class="pm-main"><img id="pmImg" src="" alt=""></div>
+        <div class="pm-thumbs" id="pmThumbs"></div>
+      </div>
+      <div class="pm-body">
+        <div class="pm-meta"><span class="pm-org" id="pmOrg"></span><span class="status" id="pmStatus"></span></div>
+        <h3 id="pmTitle"></h3>
+        <p class="pm-sub" id="pmSub"></p>
+        <p class="pm-desc" id="pmDesc"></p>
+        <ul class="pm-feats" id="pmFeats"></ul>
+        <div class="pm-tech" id="pmTech"></div>
+        <div class="pm-links" id="pmLinks"></div>
+        <p class="pm-note" id="pmNote"></p>
+      </div>
+    </div>
+  </div>
 
   <!-- ================= ABOUT ================= -->
   <section id="about">
@@ -773,7 +616,7 @@
           <p class="about-lead">A versatile, results-driven software engineer with 9+ years of experience across mobile app development, AI/ML and full-stack engineering. Proficient in Java, Kotlin, Flutter/Dart and Python — designing responsive, animated UIs (GetX, Provider) and integrating JWT auth, Google/Facebook login and Firebase. Skilled in backend integration with REST APIs, MongoDB, MySQL and Firebase, and in deploying ML models via Flask/FastAPI with CUDA GPU acceleration. Strong in AI/deep learning — lip-sync animation (Wav2Lip, RVC+VITS), real-time speech processing and avatar integration (Live2D, ReadyPlayerMe) — with model training in PyTorch, TensorFlow, OpenCV, plus biometric &amp; NADRA verification workflows.</p>
           <ul class="info-grid">
             <li><strong>Birthday</strong> <span>15 Sep 1993</span></li>
-            <li><strong>Age</strong> <span>32</span></li>
+            <li><strong>Age</strong> <span id="age">33</span></li>
             <li><strong>Website</strong> <span>www.paxees.com</span></li>
             <li><strong>Degree</strong> <span>BSCS</span></li>
             <li><strong>City</strong> <span>Karachi, Pakistan</span></li>
@@ -782,7 +625,8 @@
           <ul class="about-points">
             <li>9+ years in mobile development — Flutter, Android (Java/Kotlin), iOS (Swift).</li>
             <li>AI-powered mobile solutions: NLP, Computer Vision, LLM integration.</li>
-            <li>Backend integration with REST APIs, Node.js and enterprise systems (Java / .NET).</li>
+            <li>Backend &amp; web: REST/SOAP, Node.js/Express, ASP.NET Core MVC, React portals.</li>
+            <li>Mobile app security: VAPT remediation, TLS pinning, root/jailbreak &amp; hook detection, AES-GCM.</li>
             <li>Databases: Oracle, MySQL, MongoDB, Firebase, SQLite.</li>
             <li>Scalable, secure apps built on MVVM &amp; Clean Architecture.</li>
             <li>Strong UI/UX, performance optimization and responsive layouts.</li>
@@ -812,16 +656,26 @@
               <span class="when">Mar 2026 – Present</span>
               <div class="org">State Bank of Pakistan</div>
               <ul class="duties">
-                <li>Develop secure, scalable, high-performance Flutter/Dart apps aligned with SBP regulatory and digital-banking standards.</li>
-                <li>Build responsive UIs and integrate mobile apps with backend APIs and cloud services.</li>
-                <li>Implement security frameworks — JWT, OAuth, encrypted authentication — and performance optimisation for compliant banking operations.</li>
-                <li>Apply code-security best practices and localisation for reliable, maintainable applications.</li>
-                <li>Collaborate cross-functionally to deliver seamless UX for banking customers.</li>
+                <li>Lead developer of the <a href="#project-sbp-uma" class="plink">SBP Unified Mobile App</a> (Flutter, Android &amp; iOS): economic indicators, AskSBP AI chatbot with voice, ATM/branch locator, FCM push, and bilingual EN/اردو accessible UI.</li>
+                <li>Led security hardening and VAPT remediation: AES-256-GCM encrypted remote config, Keystore/Keychain storage, root/jailbreak/Frida detection, TLS pinning, Firebase App Check, R8 and obfuscation.</li>
+                <li>Maintain the <a href="#project-sunwai" class="plink">SUNWAI complaint app</a> (live on Play and the App Store). Rebuilt it as an ASP.NET Core 8 MVC web portal on REST + SOAP (CA Service Desk) backends, with an agent dashboard and Swagger docs.</li>
+                <li>Designed the solution and network-security architecture for the <a href="#project-smelevate" class="plink">SMElevate SME loan portal</a>: Cloudflare, WAF, VPN, MFA, per-bank RBAC and six trust zones.</li>
+                <li>Built internal tooling: a Firebase/FCM notification server and admin panel, and a <a href="#project-pytools" class="plink">Python developer tool suite</a> (API client, JSON/PDF/image and APK-signing tools).</li>
               </ul>
               <div class="meta">
                 <div>📍 I.I. Chundrigar Road, Karachi, Pakistan</div>
                 <div>☎ +(92) (021) 33115953 · ✉ recruitment@sbp.org.pk</div>
               </div>
+            </div>
+            <div class="titem">
+              <h4>Freelance Full-Stack Developer — Client Projects</h4>
+              <span class="when">Ongoing</span>
+              <div class="org">Paxees · Independent</div>
+              <ul class="duties">
+                <li><a href="#project-therapyhome" class="plink">Therapy Home</a>: live clinic management and billing platform (React, Node/Express, MongoDB) with per-student session billing, fee slips, payroll and analytics.</li>
+                <li><a href="#project-sareena" class="plink">Sareena PartHub</a>: live multi-shop ERP and marketplace for mobile-parts markets (React web panel, Flutter app, Node API), with OCR/PDF invoice import.</li>
+                <li>22+ client apps delivered across e-commerce, CRM, pharmacy, education and media (see Portfolio → Client Apps).</li>
+              </ul>
             </div>
             <div class="titem">
               <h4>Senior Software Engineer — Native Android | Flutter</h4>
@@ -952,7 +806,11 @@
         <div class="skill"><div class="top"><b>Lottie / Flare Animations</b><i>70%</i></div><div class="bar"><span data-val="70"></span></div></div>
         <div class="skill"><div class="top"><b>Node.js Backend Development</b><i>85%</i></div><div class="bar"><span data-val="85"></span></div></div>
         <div class="skill"><div class="top"><b>RESTful APIs / Web Services (SOAP)</b><i>85%</i></div><div class="bar"><span data-val="85"></span></div></div>
-        <div class="skill"><div class="top"><b>C / C++ / C# (.NET)</b><i>70%</i></div><div class="bar"><span data-val="70"></span></div></div>
+        <div class="skill"><div class="top"><b>ASP.NET Core MVC / C#</b><i>75%</i></div><div class="bar"><span data-val="75"></span></div></div>
+        <div class="skill"><div class="top"><b>React / Vite / MUI Web Portals</b><i>80%</i></div><div class="bar"><span data-val="80"></span></div></div>
+        <div class="skill"><div class="top"><b>Mobile App Security (VAPT, Pinning, Obfuscation)</b><i>85%</i></div><div class="bar"><span data-val="85"></span></div></div>
+        <div class="skill"><div class="top"><b>Python Tooling (Tkinter, PyMuPDF, OpenCV)</b><i>80%</i></div><div class="bar"><span data-val="80"></span></div></div>
+        <div class="skill"><div class="top"><b>C / C++</b><i>70%</i></div><div class="bar"><span data-val="70"></span></div></div>
         <div class="skill"><div class="top"><b>HTML / CSS / JavaScript</b><i>75%</i></div><div class="bar"><span data-val="75"></span></div></div>
         <div class="skill"><div class="top"><b>Oracle / MySQL / MongoDB / Firebase / SQLite</b><i>85%</i></div><div class="bar"><span data-val="85"></span></div></div>
         <div class="skill"><div class="top"><b>Core Java / Kotlin</b><i>85%</i></div><div class="bar"><span data-val="85"></span></div></div>
@@ -1104,16 +962,14 @@
         <a href="https://join.skype.com/invite/t8IryHzka4hj" target="_blank" aria-label="Skype"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 1 8.66 15.03 5.5 5.5 0 0 1-7.7 7.66A10 10 0 0 1 3.31 6.34 5.5 5.5 0 0 1 11 .34 10 10 0 0 1 12 2z"/></svg></a>
         <a href="https://github.com/xeeshansami" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg></a>
       </div>
-      <div class="copy">© 2026 <span>Paxees</span>. All rights reserved · Designed &amp; built by Mohammad Zeeshan</div>
+      <div class="copy">© <span id="yr">2026</span> <span>Paxees</span>. All rights reserved · Designed &amp; built by Mohammad Zeeshan</div>
     </div>
   </footer>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox"><button class="close" id="lbClose">✕</button><img src="" alt="Preview" id="lbImg"></div>
 
   <!-- Back to top -->
   <button class="to-top" id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
 
+  <script src="assets/js/projects.js"></script>
   <script>
     /* ===== THEME TOGGLE ===== */
     const root = document.documentElement;
@@ -1164,24 +1020,99 @@
       setTimeout(() => { rIndex = (rIndex + 1) % roles.length; paintRole(rIndex); rTitle.style.opacity = 1; rDesc.style.opacity = 1; }, 400);
     }, 3200);
 
-    /* ===== PORTFOLIO FILTER ===== */
+    /* ===== PORTFOLIO GRID (data in assets/js/projects.js) ===== */
+    const STATUS = { live: 'Live', soon: 'Launching soon', dev: 'Under development', internal: 'Enterprise', delivered: 'Delivered', private: 'Private repo' };
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const enc = u => encodeURI(u);
+    const pgrid = document.getElementById('pgrid');
+    pgrid.innerHTML = PROJECTS.map((p, i) => `
+      <button class="pcard" data-cats="${p.cats.join(' ')}" data-i="${i}" aria-label="${esc(p.title)} — view details">
+        <div class="pimg">
+          <span class="tag">${esc(p.tag)}</span>
+          <span class="status ${p.status}">${STATUS[p.status]}</span>
+          <img src="${enc(p.cover)}" alt="${esc(p.title)}" loading="lazy">
+        </div>
+        <div class="pinfo">
+          <span class="porg">${esc(p.org)}</span>
+          <h4>${esc(p.title)}</h4>
+          <p>${esc(p.sub)}</p>
+          <span class="pmore">View details →</span>
+        </div>
+      </button>`).join('');
+
     const pbtns = document.querySelectorAll('.pfilters button');
-    const pcards = document.querySelectorAll('.pcard');
+    const pcards = pgrid.querySelectorAll('.pcard');
     pbtns.forEach(b => b.addEventListener('click', () => {
       pbtns.forEach(x => x.classList.remove('active')); b.classList.add('active');
       const f = b.dataset.filter;
-      pcards.forEach(c => { c.style.display = (f === '*' || c.dataset.cat === f) ? '' : 'none'; });
+      pcards.forEach(c => { c.style.display = (f === '*' || c.dataset.cats.split(' ').includes(f)) ? '' : 'none'; });
     }));
 
-    /* ===== LIGHTBOX ===== */
-    const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg');
-    document.querySelectorAll('.pcard a.lb').forEach(a => a.addEventListener('click', e => {
-      e.preventDefault(); lbImg.src = a.getAttribute('href'); lb.classList.add('open');
-    }));
-    function closeLB() { lb.classList.remove('open'); lbImg.src = ''; }
-    document.getElementById('lbClose').addEventListener('click', closeLB);
-    lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+    /* ===== PROJECT MODAL ===== */
+    const ICONS = {
+      web: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+      play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm11.6 11.6 2.6 2.6-11.5 6.6 8.9-9.2zm0-2.8L6.3 1.4 17.8 8l-2.6 2.6zm3.9-1.8 2.7 1.6c.8.5.8 1.7 0 2.2l-2.7 1.6-2.9-2.9 2.9-2.5z"/></svg>',
+      ios: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9s-2-.9-3.4-.9c-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.1zM13.9 4.9c.7-.9 1.2-2.1 1.1-3.3-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.2 1.1.1 2.3-.6 3-1.5z"/></svg>'
+    };
+    const pm = document.getElementById('pmodal'), pmImg = document.getElementById('pmImg'), pmThumbs = document.getElementById('pmThumbs');
+    let lastFocus = null;
+    function showImg(p, idx) {
+      pmImg.src = enc(p.gallery[idx]); pmImg.alt = `${p.title} — screenshot ${idx + 1}`;
+      pmThumbs.querySelectorAll('button').forEach((b, j) => b.classList.toggle('active', j === idx));
+    }
+    function linkBtn(kind, url, label) {
+      const names = { web: 'Visit website', play: 'Google Play', ios: 'App Store' };
+      if (url === undefined || url === null) return '';
+      if (!url) return `<span class="btn btn-ghost disabled">${ICONS[kind]}${names[kind]} · coming soon</span>`;
+      return `<a class="btn ${kind === 'web' ? 'btn-primary' : 'btn-ghost'}" href="${esc(url)}" target="_blank" rel="noopener">${ICONS[kind]}${esc(label || names[kind])}</a>`;
+    }
+    function openProject(i) {
+      const p = PROJECTS[i];
+      document.getElementById('pmOrg').textContent = p.org;
+      const st = document.getElementById('pmStatus'); st.className = 'status ' + p.status; st.textContent = STATUS[p.status];
+      document.getElementById('pmTitle').textContent = p.title;
+      document.getElementById('pmSub').textContent = p.sub;
+      document.getElementById('pmDesc').textContent = p.desc;
+      document.getElementById('pmFeats').innerHTML = (p.features || []).map(f => `<li>${esc(f)}</li>`).join('');
+      document.getElementById('pmTech').innerHTML = (p.tech || []).map(t => `<span>${esc(t)}</span>`).join('');
+      const l = p.links || {};
+      document.getElementById('pmLinks').innerHTML = linkBtn('web', l.web, l.webLabel) + linkBtn('play', l.play) + linkBtn('ios', l.ios);
+      document.getElementById('pmNote').textContent = p.note || '';
+      pmThumbs.innerHTML = p.gallery.length > 1 ? p.gallery.map((g, j) => `<button aria-label="Screenshot ${j + 1}"><img src="${enc(g)}" alt="" loading="lazy"></button>`).join('') : '';
+      pmThumbs.querySelectorAll('button').forEach((b, j) => b.addEventListener('click', () => showImg(p, j)));
+      showImg(p, 0);
+      lastFocus = document.activeElement;
+      pm.classList.add('open'); document.body.classList.add('modal-open');
+      document.getElementById('pmClose').focus({ preventScroll: true }); pm.scrollTop = 0;
+      history.replaceState(null, '', '#project-' + p.id);
+    }
+    function closeProject() {
+      if (!pm.classList.contains('open')) return;
+      pm.classList.remove('open'); document.body.classList.remove('modal-open'); pmImg.src = '';
+      history.replaceState(null, '', '#portfolio');
+      if (lastFocus) lastFocus.focus();
+    }
+    pcards.forEach(c => c.addEventListener('click', () => openProject(+c.dataset.i)));
+    document.getElementById('pmClose').addEventListener('click', closeProject);
+    pm.addEventListener('click', e => { if (e.target === pm) closeProject(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProject(); });
+    // Deep links: share  …/myPortfolio/#project-sbp-uma  to open a project directly
+    function openFromHash() {
+      const m = location.hash.match(/^#project-(.+)$/);
+      const i = m ? PROJECTS.findIndex(p => p.id === m[1]) : -1;
+      if (i >= 0) openProject(i);
+    }
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
+
+    /* ===== AGE + YEAR ===== */
+    (function () {
+      const now = new Date(), b = new Date(1993, 8, 15);
+      let age = now.getFullYear() - b.getFullYear();
+      if (now < new Date(now.getFullYear(), b.getMonth(), b.getDate())) age--;
+      document.getElementById('age').textContent = age;
+      document.getElementById('yr').textContent = now.getFullYear();
+    })();
 
     /* ===== REVEAL + COUNTERS + SKILL BARS ===== */
     const io = new IntersectionObserver((entries) => {
