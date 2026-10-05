@@ -11,7 +11,7 @@
             internal  → Enterprise / internal deployment
             delivered → Delivered to client
             private   → Private repository
-   cats:    sbp | hbl | jsbank | client | web | python | utility
+   cats:    sbp | hbl | jsbank | business | commerce | education | healthcare | media | web | tools
 ============================================================ */
 const PROJECTS = [
   {
@@ -95,22 +95,23 @@ const PROJECTS = [
   },
   {
     id: 'therapyhome',
-    title: 'Therapy Home — Clinic Management',
-    sub: 'Therapy centre admissions, sessions, fees & payroll',
+    title: 'Therapy Home — Special Education School',
+    sub: 'School management for a special-needs school · Nagan Chowrangi, Karachi',
     org: 'Client project',
-    cats: ['client', 'web'],
-    tag: 'Client · HealthTech',
+    cats: ['education', 'healthcare', 'web'],
+    tag: 'EdTech · Special Needs',
     status: 'live',
     cover: 'assets/img/portfolio/therapyhome/cover.jpg',
     gallery: ['assets/img/portfolio/therapyhome/landing.jpg', 'assets/img/portfolio/therapyhome/fee_sessions.jpg', 'assets/img/portfolio/therapyhome/fee_records.jpg'],
-    desc: 'A web-based management and billing system for a child-therapy centre. It covers student admissions, therapy classes and sessions, staff, and the full fee and salary cycle. Billing is priced per student, so the same therapy can carry a different per-session rate for each child, and each bill prints as a bilingual fee slip. I customised and extended a MERN school-management base into a production platform for the client.',
+    desc: 'Therapy Home is a special-education school and therapy centre at Nagan Chowrangi, Karachi. It serves children with autism spectrum disorder, Down syndrome, cerebral palsy, speech and language difficulties, learning challenges, slow learning, hearing or vision impairment, and physical or intellectual challenges. I built its school-management platform. It runs student admissions with an individual therapy plan per child (for example occupational, behaviour and speech therapy), classes and sessions, teachers and staff, attendance and progress, and the full fee and payroll cycle. The platform started from an open-source MERN school-management base, which I heavily customised for a special-needs school.',
     features: [
-      'Per-session billing with editable per-student rates and live net-fee totals',
+      'Student admissions with an individual therapy / session plan per child',
+      'Per-session billing — the same therapy can carry a different rate for each child, with live net-fee totals',
       'Sequential invoices and bilingual A4 / PDF fee slips with reprint',
       'Fee records: search, billed vs paid charts, outstanding dues',
       'Staff salary payments, salary slips and salary records',
       'Animated dashboard with fees, dues and salaries analytics',
-      'Admin / Staff / Student roles, attendance, notices and complaints',
+      'Admin / Teacher & Staff / Student roles, attendance, progress marks, notices and parent complaints',
       'OTP-protected edits and deletes, light/dark theme with accent colours'
     ],
     tech: ['React 18', 'MUI 5', 'Redux Toolkit', 'Recharts', 'Node.js', 'Express', 'MongoDB Atlas', 'Vercel'],
@@ -122,8 +123,8 @@ const PROJECTS = [
     title: 'Sareena PartHub — Mobile Parts ERP & Marketplace',
     sub: 'Multi-shop ERP · Web panel · Flutter app · Consumer marketplace',
     org: 'Client project',
-    cats: ['client', 'web'],
-    tag: 'Client · Retail ERP',
+    cats: ['business', 'commerce', 'web'],
+    tag: 'Retail ERP · Marketplace',
     status: 'live',
     cover: 'assets/img/portfolio/sareena/cover.jpg',
     gallery: ['assets/img/portfolio/sareena/admin_login.jpg', 'assets/img/portfolio/sareena/storefront.jpg', 'assets/img/portfolio/sareena/storefront_mobile.jpg'],
@@ -147,7 +148,7 @@ const PROJECTS = [
     title: 'Paxees Developer Tool Suite',
     sub: 'Python desktop toolkit — API, JSON, PDF, image & APK tools',
     org: 'Personal / Internal tooling',
-    cats: ['python'],
+    cats: ['tools'],
     tag: 'Python · Desktop',
     status: 'private',
     cover: 'assets/img/portfolio/pytools/cover.jpg',
@@ -179,49 +180,93 @@ const PROJECTS = [
     'Branch survey and checklist mobile app for HBL.', ['Android', 'Kotlin']),
 
   /* ---------- JS Bank ---------- */
-  L('jsbl-aof', 'JS Bank — Account Opening', 'Tablet account-opening application', 'JS Bank', 'jsbank', 'JS Bank · Banking', 'internal', 'jsbl/splash.png', ['jsbl/acccountOpening.png'],
-    'Tablet account-opening application for JS Bank, built at JS Bank’s Innovation & IT Center.', ['Flutter', 'Android']),
+  {
+    id: 'jsbvs',
+    title: 'JS BVS — Biometric Verification',
+    sub: 'Contactless fingerprint verification with the phone camera',
+    org: 'JS Bank',
+    cats: ['jsbank'],
+    tag: 'JS Bank · Biometrics',
+    status: 'live',
+    cover: 'assets/img/portfolio/jsbvs/cover.jpg',
+    gallery: ['cnic', 'capture', 'guidance', 'bvs_for'].map(n => `assets/img/portfolio/jsbvs/${n}.jpg`),
+    desc: 'JS Bank\'s public biometric verification app (100K+ downloads). Customers who opened a digital account, such as Zindigi, JS Blink, Asaan Digital, Freelancer Digital or Asaan Digital Remittance, complete NADRA biometric verification from home, as SBP regulations require. There is no branch visit and no fingerprint scanner: the phone\'s rear camera captures the fingerprints and they are verified against NADRA in real time.',
+    features: [
+      'Contactless 4-finger capture from the rear camera, with on-screen hand guidance',
+      'Real-time NADRA biometric verification for digital-account customers',
+      'CNIC entry with consent, then the guided capture flow',
+      'Account-type selection: Zindigi, JS Blink, Asaan Digital and more',
+      'Saves a branch visit inside the 60-day regulatory verification window',
+      'Android and iOS releases'
+    ],
+    tech: ['Android (Kotlin / Java)', 'iOS', 'Camera fingerprint SDK', 'NADRA biometric API', 'REST'],
+    links: { play: 'https://play.google.com/store/apps/details?id=com.jsbl.bvs', ios: 'https://apps.apple.com/pk/app/js-bvs/id1618188083' },
+    note: ''
+  },
+  {
+    id: 'jsbl-aof',
+    title: 'JS Bank One Window — Account Opening',
+    sub: 'In-branch digital account opening with NADRA biometrics',
+    org: 'JS Bank',
+    cats: ['jsbank'],
+    tag: 'JS Bank · Onboarding',
+    status: 'internal',
+    cover: 'assets/img/portfolio/jsbl/splash.png',
+    gallery: ['assets/img/portfolio/jsbl/splash.png', 'assets/img/portfolio/jsbl/acccountOpening.png'],
+    desc: 'One Window is JS Bank\'s in-branch onboarding app. Branch staff use it to open accounts and create customer records (CIF) on a tablet or phone, without paper forms. It verifies the customer with NADRA (Verisys and fingerprint biometrics, from a USB scanner or the phone camera), fills dynamic e-forms, captures documents and signatures, and submits the case for processing.',
+    features: [
+      'Guided CIF / account-opening wizard: customer info, contact and next of kin, PEP and demographics, account details, summary',
+      'NADRA Verisys and fingerprint biometric verification (Nitgen USB scanner or contactless camera capture)',
+      'Customer signature capture and document / picture upload with on-device processing (OpenCV)',
+      'Dynamic e-forms with reusable form components and searchable pick-lists',
+      'Existing-to-bank (ETB) case handling, meeting and call scheduling for relationship staff',
+      'PDF generation and printing of account forms'
+    ],
+    tech: ['Android', 'Kotlin', 'Java', 'Nitgen biometric SDK', 'OpenCV', 'NADRA Verisys', 'REST'],
+    links: {},
+    note: 'Internal enterprise app, distributed to JS Bank branches.'
+  },
 
   /* ---------- Client apps ---------- */
-  L('realtorscrm', 'Realtors CRM', 'Flutter iOS / Android application', 'Client project', 'client', 'CRM', 'live', 'realtorscrm/image1.jpeg', ['realtorscrm/realtorscrm.jpeg'],
+  L('realtorscrm', 'Realtors CRM', 'Flutter iOS / Android application', 'Client project', 'business', 'CRM', 'live', 'realtorscrm/image1.jpeg', ['realtorscrm/realtorscrm.jpeg'],
     'CRM application for real-estate professionals.', ['Flutter'], { play: 'https://play.google.com/store/apps/details?id=com.amr.realtorscrm' }),
-  L('bidfeed', 'Bidfeed Home', 'Bidfeed Home mobile application', 'Client project', 'client', 'Business', 'live', 'bidfeed/Bidfeed.PNG', [],
+  L('bidfeed', 'Bidfeed Home', 'Bidfeed Home mobile application', 'Client project', 'commerce', 'Business', 'live', 'bidfeed/Bidfeed.PNG', [],
     'Mobile ordering application for Bidfood customers.', ['Android'], { play: 'https://play.google.com/store/apps/details?id=com.retailak.bidfoods' }),
-  L('ags', 'AGS Multi Order Booking', 'Pharmacy app', 'Client project', 'client', 'Pharmacy', 'live', 'ags/ags.PNG', ['ags/agsflow.PNG'],
+  L('ags', 'AGS Multi Order Booking', 'Pharmacy app', 'Client project', 'business healthcare', 'Pharmacy', 'live', 'ags/ags.PNG', ['ags/agsflow.PNG'],
     'Multi order-booking app for a pharmaceutical distributor.', ['Android'], { play: 'https://play.google.com/store/apps/details?id=com.agsadil.agssalesandroidclientorderdocter' }),
-  L('offtheschool', 'Off The School', 'Flutter iOS / Android application', 'Client project', 'client', 'Education', 'delivered', 'offtheschool/image1.jpeg', ['offtheschool/offtheschool.jpeg'],
+  L('offtheschool', 'Off The School', 'Flutter iOS / Android application', 'Client project', 'education', 'Education', 'delivered', 'offtheschool/image1.jpeg', ['offtheschool/offtheschool.jpeg'],
     'Education application for iOS and Android.', ['Flutter']),
-  L('dawngroup', 'Dawn Group', 'Flutter iOS / Android application', 'Client project', 'client', 'Business', 'delivered', 'dawngroup/image10.jpeg', ['dawngroup/dawngroup.jpeg'],
+  L('dawngroup', 'Dawn Group', 'Flutter iOS / Android application', 'Client project', 'business', 'Business', 'delivered', 'dawngroup/image10.jpeg', ['dawngroup/dawngroup.jpeg'],
     'Business application for iOS and Android.', ['Flutter']),
-  L('tengram', 'Tengram', 'Coupon app', 'Client project', 'client', 'Coupons', 'delivered', 'tengram/tengram.png', ['tengram/tengramflow.png'],
+  L('tengram', 'Tengram', 'Coupon app', 'Client project', 'commerce', 'Coupons', 'delivered', 'tengram/tengram.png', ['tengram/tengramflow.png'],
     'Coupon and deals mobile app.', ['Android']),
-  L('tcc', 'The Clone Conservatory', 'Plants e-commerce app', 'Client project', 'client', 'E-Commerce', 'delivered', 'tcc/tcc.png', ['tcc/tccdarkflow.jpeg'],
+  L('tcc', 'The Clone Conservatory', 'Plants e-commerce app', 'Client project', 'commerce', 'E-Commerce', 'delivered', 'tcc/tcc.png', ['tcc/tccdarkflow.jpeg'],
     'E-commerce app for a plants store.', ['Mobile']),
-  L('youniform', 'YouniForm', 'E-commerce app', 'Client project', 'client', 'E-Commerce', 'delivered', 'youniform/youniform.JPEG', ['youniform/youniform.png'],
+  L('youniform', 'YouniForm', 'E-commerce app', 'Client project', 'commerce', 'E-Commerce', 'delivered', 'youniform/youniform.JPEG', ['youniform/youniform.png'],
     'E-commerce mobile app.', ['Android']),
-  L('urdunovels', 'UrduNovels', 'Novels app', 'Client project', 'client', 'Reading', 'delivered', 'UrduNovels/urduNovels.JPEG', ['UrduNovels/urduNovels.png'],
+  L('urdunovels', 'UrduNovels', 'Novels app', 'Client project', 'media', 'Reading', 'delivered', 'UrduNovels/urduNovels.JPEG', ['UrduNovels/urduNovels.png'],
     'Urdu novels reading app.', ['Android']),
-  L('gatak', 'جاتك الفزعه', 'E-commerce service app', 'Client project', 'client', 'E-Commerce', 'delivered', 'gatak/screen-0.jpg', ['gatak/Gatak.png'],
+  L('gatak', 'جاتك الفزعه', 'E-commerce service app', 'Client project', 'commerce', 'E-Commerce', 'delivered', 'gatak/screen-0.jpg', ['gatak/Gatak.png'],
     'Arabic (RTL) e-commerce service app.', ['Android', 'RTL']),
-  L('khutalkhair', 'خطى الخير', 'E-commerce service app', 'Client project', 'client', 'E-Commerce', 'delivered', 'khutalkhair/zee1.png', ['khutalkhair/khuatlkhair.png'],
+  L('khutalkhair', 'خطى الخير', 'E-commerce service app', 'Client project', 'commerce', 'E-Commerce', 'delivered', 'khutalkhair/zee1.png', ['khutalkhair/khuatlkhair.png'],
     'Arabic (RTL) e-commerce service app.', ['Android', 'RTL']),
-  L('reliance', 'Reliance Engineering', 'Business app', 'Client project', 'client', 'Business', 'delivered', 'relainceEngineering/relainceEng.JPEG', ['relainceEngineering/relianceEng.png'],
+  L('reliance', 'Reliance Engineering', 'Business app', 'Client project', 'business', 'Business', 'delivered', 'relainceEngineering/relainceEng.JPEG', ['relainceEngineering/relianceEng.png'],
     'Business app for an engineering company.', ['Android']),
 
   /* ---------- Utility & media ---------- */
-  L('vpnx', 'VPNx', 'Tool app', 'Product', 'utility', 'Tool', 'delivered', 'vpn/vpnapp.PNG', ['vpn/vpn.png'], 'VPN utility app.', ['Android']),
-  L('bihar', 'Bihar Land Records', 'बिहार भूमि · Khatian app', 'Product', 'utility', 'Records', 'delivered', 'bihar/app.PNG', ['bihar/flow.PNG'], 'Land-records (Khatian) lookup app.', ['Android']),
-  L('videotor', 'Videotor Video Editor', 'Media tool app', 'Product', 'utility', 'Media', 'delivered', 'Downloader2/app.PNG', ['Downloader2/flow.PNG'], 'Video editor app.', ['Android']),
-  L('hddownloader', 'All Video HD Downloader', 'Media tool app', 'Product', 'utility', 'Media', 'delivered', 'Downloader3/app.PNG', ['Downloader3/flow.PNG'], 'HD video downloader app.', ['Android']),
-  L('primeflix', 'PrimeFlix', 'Movie app', 'Product', 'utility', 'Movies', 'delivered', 'PrimeFlix/primeFlix.JPEG', ['PrimeFlix/primeFlix.png'], 'Movie app.', ['Android']),
-  L('mediaplayer', 'Media Player', 'Media app', 'Product', 'utility', 'Media', 'delivered', 'mediaplayer/1.png', ['mediaplayer/mediaplayer.png'], 'Media player app.', ['Android']),
-  L('convertor', 'Convertor', 'Media tool app', 'Product', 'utility', 'Media', 'delivered', 'convertor/2019_11_13_11_07_IMG_1541.JPG', ['convertor/convertor.png'], 'Media converter app.', ['Android']),
-  L('recorder', 'Call Recorder', 'Media tool app', 'Product', 'utility', 'Media', 'delivered', 'recorder/Android splash.png', ['recorder/recoreder.png'], 'Call recorder app.', ['Android']),
-  L('mxdownloader', 'MX Video Downloader', 'Media tool app', 'Product', 'utility', 'Media', 'delivered', 'Downloader/sp cahnge.jpg', ['Downloader/MX-Video-Downloder-workflow.jpg'], 'Video downloader app.', ['Android'])
+  L('vpnx', 'VPNx', 'Tool app', 'Product', 'media', 'Tool', 'delivered', 'vpn/vpnapp.PNG', ['vpn/vpn.png'], 'VPN utility app.', ['Android']),
+  L('bihar', 'Bihar Land Records', 'बिहार भूमि · Khatian app', 'Product', 'media', 'Records', 'delivered', 'bihar/app.PNG', ['bihar/flow.PNG'], 'Land-records (Khatian) lookup app.', ['Android']),
+  L('videotor', 'Videotor Video Editor', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'Downloader2/app.PNG', ['Downloader2/flow.PNG'], 'Video editor app.', ['Android']),
+  L('hddownloader', 'All Video HD Downloader', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'Downloader3/app.PNG', ['Downloader3/flow.PNG'], 'HD video downloader app.', ['Android']),
+  L('primeflix', 'PrimeFlix', 'Movie app', 'Product', 'media', 'Movies', 'delivered', 'PrimeFlix/primeFlix.JPEG', ['PrimeFlix/primeFlix.png'], 'Movie app.', ['Android']),
+  L('mediaplayer', 'Media Player', 'Media app', 'Product', 'media', 'Media', 'delivered', 'mediaplayer/1.png', ['mediaplayer/mediaplayer.png'], 'Media player app.', ['Android']),
+  L('convertor', 'Convertor', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'convertor/2019_11_13_11_07_IMG_1541.JPG', ['convertor/convertor.png'], 'Media converter app.', ['Android']),
+  L('recorder', 'Call Recorder', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'recorder/Android splash.png', ['recorder/recoreder.png'], 'Call recorder app.', ['Android']),
+  L('mxdownloader', 'MX Video Downloader', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'Downloader/sp cahnge.jpg', ['Downloader/MX-Video-Downloder-workflow.jpg'], 'Video downloader app.', ['Android'])
 ];
 
 /* Compact helper for the shorter legacy entries (function declarations are hoisted). */
 function L(id, title, sub, org, cat, tag, status, cover, extra, desc, tech, links) {
   const base = 'assets/img/portfolio/';
-  return { id, title, sub, org, cats: [cat], tag, status, cover: base + cover, gallery: [cover, ...extra].map(p => base + p), desc, tech, links: links || {} };
+  return { id, title, sub, org, cats: cat.split(' '), tag, status, cover: base + cover, gallery: [cover, ...extra].map(p => base + p), desc, tech, links: links || {} };
 }
