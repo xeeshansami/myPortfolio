@@ -196,7 +196,7 @@
   const SUGGEST = ['Which apps are live?', 'Banking experience?', 'What AI work have you done?', 'Tech stack?', 'Security expertise?', 'How can I hire you?', 'Download CV'];
   const INTENTS = [
     { k: ['hire', 'contact', 'email', 'reach', 'available', 'availability', 'freelance', 'whatsapp', 'phone', 'call', 'rate', 'cost', 'price'],
-      a: () => `You can reach Zeeshan at <a href="mailto:info.xeeshan@gmail.com">info.xeeshan@gmail.com</a>, on <a href="https://www.linkedin.com/in/xeeshansami/" target="_blank" rel="noopener">LinkedIn</a>, or through the <a href="#contact">contact form</a>. He's open to roles, collaborations and freelance work, works comfortably under NDA, and usually replies within a day.` },
+      a: () => `You can reach Zeeshan at <a href="mailto:info.xeeshan@gmail.com">info.xeeshan@gmail.com</a>, on <a href="https://www.linkedin.com/in/xeeshansami/" target="_blank" rel="noopener">LinkedIn</a>, or through the <a href="#contact">contact form</a>. He's open to new roles and collaborations. Client projects are handled separately through his own studio, <a href="#paxees">Paxees</a>. He works comfortably under NDA and usually replies within a day.` },
     { k: ['cv', 'resume', 'pdf', 'download'],
       a: () => `Here's the full CV and portfolio as a PDF: <a href="assets/docs/Mohammad-Zeeshan-Portfolio.pdf" target="_blank" rel="noopener">Mohammad-Zeeshan-Portfolio.pdf</a>.` },
     { k: ['live', 'store', 'play', 'download app', 'published', 'production', 'link', 'links', 'url'],
@@ -222,7 +222,7 @@
     { k: ['dusky', 'arabic', 'saudi', 'rtl', 'youniform', 'gatak', 'khuta'],
       a: () => `At <b>Dusky Solutions</b> (Nov 2018 – Mar 2020) Zeeshan built Android apps including ${pLink('khutalkhair')}, ${pLink('gatak')} (both Arabic / RTL e-commerce and services apps) and ${pLink('youniform')} (school-uniform e-commerce).` },
     { k: ['experience', 'years', 'career', 'history', 'background', 'about', 'who'],
-      a: () => `Mohammad Zeeshan is a <b>Senior Mobile &amp; AI Engineer</b> in Karachi with 9+ years of experience (since 2016). He is currently at the State Bank of Pakistan, after JS Bank, HBL and Dusky Solutions, and has shipped 33+ apps and portals for 24 clients. He holds a BS in Computer Science from Federal Urdu University.` },
+      a: () => `Mohammad Zeeshan is a <b>Senior Mobile &amp; AI Engineer</b> in Karachi with 9+ years of experience (since 2016). He is currently at the State Bank of Pakistan, after JS Bank, HBL and Dusky Solutions, and has shipped 33+ apps and portals across his roles and his studio Paxees. He holds a BS in Computer Science from Federal Urdu University.` },
     { k: ['education', 'degree', 'university', 'study', 'certification', 'certifications', 'certificate', 'training', 'nibaf', 'power bi', 'powerbi'],
       a: () => `He holds a <b>BSc in Computer Science</b> from Federal Urdu University, Karachi (2014–2018), and a diploma in Civil Architecture (AutoCAD 2D/3D). Most recently he completed <b>Power BI Report Server Training at NIBAF Pakistan</b> (May 2026). He also holds Microsoft Office Specialist (Excel) and Java (SoloLearn) certifications.` },
     { k: ['where', 'location', 'based', 'city', 'remote', 'relocate', 'country'],
