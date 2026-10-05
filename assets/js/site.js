@@ -10,7 +10,8 @@
   const enc = u => encodeURI(u);
   const STATUS = { live: 'Live', soon: 'Launching soon', dev: 'Under development', internal: 'Enterprise', delivered: 'Delivered', private: 'Private repo' };
   // Filter keys may list several categories (space-separated) — a project matches if it has any of them.
-  const CATS = [['*', 'All'], ['sbp', 'SBP Apps'], ['hbl', 'HBL Apps'], ['jsbank', 'JS Bank Apps'], ['business', 'Business & ERP'], ['commerce', 'E-Commerce & Retail'], ['education healthcare', 'Education & Healthcare'], ['web', 'Websites & Web Portals'], ['media', 'Media & Utility Apps'], ['tools', 'Developer Tools']];
+  const CATS = [['*', 'All'], ['sbp', 'SBP Apps'], ['hbl', 'HBL Apps'], ['jsbank', 'JS Bank Apps'], ['dusky', 'Dusky Solutions'], ['freelance', 'Freelance Clients']];
+  const TYPES = [['business', 'Business & ERP'], ['commerce', 'E-Commerce & Retail'], ['education healthcare', 'Education & Healthcare'], ['web', 'Websites & Web Portals'], ['media', 'Media & Utility Apps'], ['tools', 'Developer Tools']];
   const FEATURED = ['sbp-uma', 'sunwai', 'jsbvs', 'jsbl-aof', 'therapyhome', 'sareena', 'smelevate', 'pytools'];
   const inCat = (cats, f) => f === '*' || f.split(' ').some(k => cats.includes(k));
   const ICON = {
@@ -82,7 +83,8 @@
       <span class="pinfo"><span class="porg">${esc(p.org)}</span><span class="pt">${esc(p.title)}</span><span class="ps">${esc(p.sub)}</span></span>
     </button>`).join('') + '<p class="empty" id="pEmpty" hidden>No projects match — try another word or filter.</p>';
   const count = c => PROJECTS.filter(p => inCat(p.cats, c)).length;
-  $('#filters').innerHTML = CATS.map(([k, v], j) => `<button data-f="${k}" aria-pressed="${j === 0}">${esc(v)}<span class="n">${count(k)}</span></button>`).join('');
+  const fbtn = ([k, v]) => `<button data-f="${k}" aria-pressed="${k === '*'}">${esc(v)}<span class="n">${count(k)}</span></button>`;
+  $('#filters').innerHTML = `<div class="frow"><span class="flabel">By company</span>${CATS.map(fbtn).join('')}</div><div class="frow"><span class="flabel">By product</span>${TYPES.map(fbtn).join('')}</div>`;
   let fCat = '*', fText = '';
   function applyFilter() {
     let shown = 0;
@@ -149,6 +151,19 @@
   function fromHash() { const m = location.hash.match(/^#project-(.+)$/); if (m && byId(m[1]) >= 0) openProject(byId(m[1])); }
   addEventListener('hashchange', fromHash); fromHash();
 
+  /* ---------------- Paxees section ---------------- */
+  $$('.pax-links').forEach(box => {
+    const keys = box.dataset.cat.split(' ');
+    box.innerHTML = PROJECTS.filter(p => p.cats.includes('freelance') && keys.some(k => p.cats.includes(k)) && !['therapyhome', 'sareena'].includes(p.id))
+      .map(p => `<button class="${p.status === 'live' ? 'live' : ''}" data-i="${byId(p.id)}">${esc(p.title)}</button>`).join('');
+  });
+  $$('[data-i-id]').forEach(b => b.dataset.i = byId(b.dataset.iId));
+  $$('[data-filter-jump]').forEach(b => b.addEventListener('click', () => {
+    const f = $(`#filters button[data-f="${b.dataset.filterJump}"]`); if (f) f.click();
+    $('#projects').scrollIntoView({ behavior: 'smooth' });
+  }));
+  $$('a[data-topic]').forEach(a => a.addEventListener('click', () => { const sel = $('#contactForm select[name=topic]'); if (sel) sel.value = a.dataset.topic; }));
+
   /* ---------------- Skills ---------------- */
   const SK = [
     { t: 'Mobile engineering', s: 'Flutter · native Android & iOS', ic: '<rect x="6" y="2" width="12" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/>',
@@ -202,10 +217,12 @@
       a: () => `Web portals: ${pLink('sunwai')} (ASP.NET Core 8 MVC), ${pLink('therapyhome')} (React + Node + MongoDB), and ${pLink('sareena')} (React + Vite + Node, with a public marketplace).` },
     { k: ['python', 'tool', 'tools', 'script', 'scripts', 'desktop'],
       a: () => `${pLink('pytools')} is a Python desktop suite with 12 tools behind one launcher: an API client, JSON diff/inspect/format, a PDF editor and converters, image background removal, and an APK/AAB signing checker.` },
-    { k: ['client', 'clients', 'freelance projects', 'therapy', 'school', 'special', 'sareena', 'erp'],
-      a: () => `Recent client work:<ul><li>${pLink('therapyhome')}: school-management platform for a special-education school at Nagan Chowrangi, Karachi (live)</li><li>${pLink('sareena')}: multi-shop mobile-parts ERP and marketplace (live)</li></ul>Plus 20+ delivered apps for clients; use the <b>Business &amp; ERP</b>, <b>E-Commerce &amp; Retail</b> and <b>Education &amp; Healthcare</b> filters to browse them.` },
+    { k: ['client', 'clients', 'freelance', 'freelancing', 'paxees', 'studio', 'agency', 'business', 'company', 'team', 'therapy', 'school', 'special', 'sareena', 'erp', 'websites'],
+      a: () => `Client work runs through <a href="#paxees">Paxees</a>, Zeeshan's own software studio (a side business alongside his full-time role). 20 apps &amp; websites so far:<ul><li>${pLink('therapyhome')}: school-management platform for a special-education school at Nagan Chowrangi, Karachi (live)</li><li>${pLink('sareena')}: multi-shop mobile-parts ERP and marketplace (live)</li><li>${pLink('realtorscrm')}, ${pLink('bidfeed')} and ${pLink('ags')} (live on Google Play)</li></ul>Use the <b>Freelance Clients</b> filter to see them all.` },
+    { k: ['dusky', 'arabic', 'saudi', 'rtl', 'youniform', 'gatak', 'khuta'],
+      a: () => `At <b>Dusky Solutions</b> (Nov 2018 – Mar 2020) Zeeshan built Android apps including ${pLink('khutalkhair')}, ${pLink('gatak')} (both Arabic / RTL e-commerce and services apps) and ${pLink('youniform')} (school-uniform e-commerce).` },
     { k: ['experience', 'years', 'career', 'history', 'background', 'about', 'who'],
-      a: () => `Mohammad Zeeshan is a <b>Senior Mobile &amp; AI Engineer</b> in Karachi with 9+ years of experience (since 2016). He is currently at the State Bank of Pakistan, after JS Bank and HBL, and has shipped 33+ apps and portals for 24 clients. He holds a BS in Computer Science from Federal Urdu University.` },
+      a: () => `Mohammad Zeeshan is a <b>Senior Mobile &amp; AI Engineer</b> in Karachi with 9+ years of experience (since 2016). He is currently at the State Bank of Pakistan, after JS Bank, HBL and Dusky Solutions, and has shipped 33+ apps and portals for 24 clients. He holds a BS in Computer Science from Federal Urdu University.` },
     { k: ['education', 'degree', 'university', 'study', 'certification', 'certifications', 'certificate', 'training', 'nibaf', 'power bi', 'powerbi'],
       a: () => `He holds a <b>BSc in Computer Science</b> from Federal Urdu University, Karachi (2014–2018), and a diploma in Civil Architecture (AutoCAD 2D/3D). Most recently he completed <b>Power BI Report Server Training at NIBAF Pakistan</b> (May 2026). He also holds Microsoft Office Specialist (Excel) and Java (SoloLearn) certifications.` },
     { k: ['where', 'location', 'based', 'city', 'remote', 'relocate', 'country'],
@@ -252,7 +269,9 @@
 
   /* ---------------- Reveal ---------------- */
   const io = new IntersectionObserver(en => en.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .08, rootMargin: '0px 0px -40px 0px' });
-  $$('.rv').forEach(el => io.observe(el));
+  // ?static (screenshots, print, crawlers) shows everything without the reveal animation
+  if (/[?&]static/.test(location.search) || !('IntersectionObserver' in window)) $$('.rv').forEach(el => el.classList.add('in'));
+  else $$('.rv').forEach(el => io.observe(el));
 
   /* ---------------- Contact form (Web3Forms) ---------------- */
   const cForm = $('#contactForm'), cStatus = $('#cStatus'), cSubmit = $('#cSubmit');

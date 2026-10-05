@@ -180,7 +180,9 @@
 
     /* ============================== ALL WORK ============================== */
     .work-tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 26px; }
-    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filters { display: grid; gap: 10px; }
+    .frow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .flabel { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); min-width: 96px; }
     .filters button { font-size: .86rem; font-weight: 500; padding: 8px 14px; border-radius: 100px; border: 1px solid var(--line-2); background: var(--card); color: var(--dim); cursor: pointer; transition: all .2s; }
     .filters button[aria-pressed="true"], .filters button:hover { color: #fff; background: var(--grad); border-color: transparent; }
     .filters button .n { opacity: .7; font-size: .76rem; margin-left: 4px; }
@@ -294,6 +296,38 @@
     .mate img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
     .mate b { display: block; font-size: .9rem; }
     .mate span { font-size: .78rem; color: var(--dim); }
+
+    /* ============================== PAXEES ============================== */
+    .pax-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .pax-stats div { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; }
+    .pax-stats b { font-family: var(--display); font-size: 1.9rem; display: block; line-height: 1.1; }
+    .pax-stats span { font-size: .84rem; color: var(--faint); }
+    .pax-h { font-family: var(--display); font-size: 1.2rem; margin: 36px 0 14px; }
+    .pax-flag { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .pax-card { display: grid; grid-template-columns: 44% 1fr; text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; cursor: pointer; padding: 0; transition: transform .3s var(--ease), border-color .3s; }
+    .pax-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .pax-card img { width: 100%; height: 100%; object-fit: cover; min-height: 190px; }
+    .pc-b { padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+    .pc-b b { font-family: var(--display); font-size: 1.12rem; }
+    .pc-b > span:not(.status) { font-size: .88rem; color: var(--dim); }
+    .pc-b small { font-size: .78rem; color: var(--accent-2); font-weight: 600; margin-top: auto; }
+    .pax-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .pax-box { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; }
+    .pax-box h4 { font-family: var(--display); font-size: 1rem; }
+    .pax-box p { font-size: .85rem; color: var(--dim); margin: 4px 0 10px; }
+    .pax-links { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pax-links button { font-size: .78rem; padding: 4px 10px; border-radius: 100px; border: 1px solid var(--line-2); background: var(--chip); cursor: pointer; }
+    .pax-links button:hover { border-color: var(--accent); color: var(--accent); }
+    .pax-links button.live::after { content: " ●"; color: #22c55e; font-size: .7em; }
+    #paxees .process { margin-top: 30px; }
+    .pax-cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; padding: 22px 24px; border-radius: var(--r-lg); background: var(--grad); color: #fff; }
+    .pax-cta b { font-family: var(--display); font-size: 1.2rem; display: block; }
+    .pax-cta span { font-size: .92rem; opacity: .9; }
+    .pax-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .pax-cta .btn-primary { background: #fff; color: #312e81; box-shadow: none; }
+    .pax-cta .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+    @media (max-width: 900px) { .pax-flag { grid-template-columns: 1fr; } .pax-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .pax-stats, .pax-grid { grid-template-columns: repeat(2, 1fr); } .pax-card { grid-template-columns: 1fr; } .pax-card img { aspect-ratio: 4 / 3; min-height: 0; } }
 
     /* ============================== CONTACT ============================== */
     .contact { display: grid; grid-template-columns: .85fr 1.15fr; gap: 24px; }
@@ -414,6 +448,7 @@
         <a href="#work">Work</a>
         <a href="#assistant">Ask AI</a>
         <a href="#experience">Experience</a>
+        <a href="#paxees">Paxees</a>
         <a href="#skills">Skills</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
@@ -562,15 +597,6 @@
                 <li>Built internal tooling: a Firebase/FCM notification server and admin panel, and a <a href="#project-pytools" class="plink">Python developer tool suite</a>.</li>
               </ul>
             </article>
-            <article class="job now rv">
-              <div class="job-top"><h3>Freelance Full-Stack &amp; Mobile Developer</h3><span class="when">Ongoing</span></div>
-              <div class="org">Paxees · Independent</div>
-              <ul>
-                <li><a href="#project-therapyhome" class="plink">Therapy Home</a>: live school-management platform for a special-education school (React, Node, MongoDB). Covers admissions, individual therapy plans, session billing, payroll and analytics.</li>
-                <li><a href="#project-sareena" class="plink">Sareena PartHub</a>: live multi-shop ERP and marketplace (React, Flutter, Node), with OCR/PDF invoice import.</li>
-                <li>20+ client apps delivered across e-commerce, CRM, pharmacy, education and media.</li>
-              </ul>
-            </article>
             <article class="job rv">
               <div class="job-top"><h3>Senior Software Engineer — Native Android | Flutter</h3><span class="when">Oct 2023 – Mar 2026</span></div>
               <div class="org">JS Bank — Innovation &amp; IT Center</div>
@@ -586,15 +612,23 @@
               <div class="job-top"><h3>Senior Software Application Developer</h3><span class="when">Jun 2021 – Oct 2023</span></div>
               <div class="org">Habib Bank Limited — Innovation &amp; IT Center</div>
               <ul>
-                <li>Built enterprise Android apps in Kotlin and Java, including <a href="#project-hbl-hr" class="plink">People Connect</a>, <a href="#project-hbl-rda" class="plink">Roshan Digital Account</a> and branch / asset survey apps.</li>
+                <li>Built enterprise Android apps in Kotlin and Java: <a href="#project-hbl-hr" class="plink">People Connect On the GO</a> (HR), <a href="#project-hbl-rda" class="plink">Roshan Digital Account</a> (tablet onboarding), <a href="#project-hbl-assets" class="plink">Bank Assets Survey</a> and <a href="#project-hbl-branch" class="plink">Branch Survey</a>.</li>
                 <li>Worked with backend teams on data sync and performance, and applied strong security practices for user privacy.</li>
               </ul>
             </article>
+            <article class="job rv">
+              <div class="job-top"><h3>Android Application Developer</h3><span class="when">Nov 2018 – Mar 2020</span></div>
+              <div class="org">Dusky Solutions</div>
+              <ul>
+                <li>Built Arabic (RTL) e-commerce and services apps for the Gulf market: <a href="#project-khutalkhair" class="plink">خطى الخير (Khuta Alkhair)</a> and <a href="#project-gatak" class="plink">جاتك الفزعه (Gatak Alfazaa)</a>.</li>
+                <li>Built <a href="#project-youniform" class="plink">YouniForm</a>, a school-uniform e-commerce app.</li>
+                <li>Improved performance and stability, and adopted new Android technologies across the team's apps.</li>
+              </ul>
+            </article>
             <details class="job rv">
-              <summary><div class="job-top"><h3>Earlier roles (2016 – 2021)</h3><span class="when">5 roles</span></div></summary>
+              <summary><div class="job-top"><h3>Earlier roles (2016 – 2021)</h3><span class="when">4 roles</span></div></summary>
               <ul style="margin-top:10px">
                 <li><b>Senior Mobile Application Developer</b>, Appxone (Mar 2020 – Jun 2021): led Android projects, mentored juniors, owned testing and deployments.</li>
-                <li><b>Android Application Developer</b>, Dusky Solutions (Nov 2018 – Mar 2020): built advanced Android apps, improved performance and adopted new technologies.</li>
                 <li><b>Android Application Developer</b>, Cloud Chef (Dec 2017 – Apr 2018): web-services management app; trained other developers.</li>
                 <li><b>Android Application Developer</b>, Comsol Pakistan (Jun 2017 – Dec 2017): email client with Dropbox, Gmail, OneDrive and Yahoo integration and offline mode.</li>
                 <li><b>Customer Support Executive</b>, ibex Global / TRG (Dec 2016 – Apr 2017): requirement analysis of customer problems.</li>
@@ -625,8 +659,66 @@
       </div>
     </section>
 
+    <!-- ============================== PAXEES (side business) ============================== -->
+    <section id="paxees" style="background:var(--bg-2)">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="kicker">My side business</span>
+          <h2>Paxees: <span class="grad-text">my software studio</span> for clients</h2>
+          <p>Alongside my full-time engineering role, I run <b>Paxees</b>, a small software studio with a team of designers and developers. We build mobile apps, websites and business platforms for startups, schools, retailers and SMEs in Pakistan and abroad.</p>
+        </div>
+        <div class="pax-stats rv">
+          <div><b>20</b><span>client apps &amp; websites</span></div>
+          <div><b>24</b><span>happy clients</span></div>
+          <div><b>5</b><span>live products today</span></div>
+          <div><b>5</b><span>person core team</span></div>
+        </div>
+
+        <h3 class="pax-h rv">Flagship client platforms</h3>
+        <div class="pax-flag">
+          <button class="pax-card rv" data-i-id="therapyhome">
+            <img src="assets/img/portfolio/therapyhome/cover.jpg" alt="" loading="lazy">
+            <span class="pc-b"><span class="status live">Live</span><b>Therapy Home</b><span>School-management platform for a special-education school at Nagan Chowrangi, Karachi: admissions, individual therapy plans, session billing, payroll and analytics.</span><small>React · Node.js · MongoDB · Vercel</small></span>
+          </button>
+          <button class="pax-card rv" data-i-id="sareena">
+            <img src="assets/img/portfolio/sareena/cover.jpg" alt="" loading="lazy">
+            <span class="pc-b"><span class="status live">Live</span><b>Sareena PartHub</b><span>Multi-shop ERP and public marketplace for mobile-parts markets: inventory, POS, ledgers, and OCR/PDF supplier-invoice import.</span><small>React · Flutter · Node.js · MongoDB · ML Kit</small></span>
+          </button>
+        </div>
+
+        <h3 class="pax-h rv">What Paxees builds</h3>
+        <div class="pax-grid">
+          <div class="pax-box rv"><h4>Business &amp; ERP</h4><p>CRMs, order booking, inventory and back-office systems.</p><div class="pax-links" data-cat="business"></div></div>
+          <div class="pax-box rv"><h4>E-commerce &amp; retail</h4><p>Storefronts, coupons, ordering and marketplaces.</p><div class="pax-links" data-cat="commerce"></div></div>
+          <div class="pax-box rv"><h4>Education &amp; healthcare</h4><p>School management, learning and pharmacy apps.</p><div class="pax-links" data-cat="education healthcare"></div></div>
+          <div class="pax-box rv"><h4>Media &amp; utility apps</h4><p>Video editors, downloaders, players, VPN and records apps.</p><div class="pax-links" data-cat="media"></div></div>
+        </div>
+
+        <div class="process rv">
+          <div><b><span>01</span>Discover</b><p>A call to understand goals, users and constraints. NDA on request.</p></div>
+          <div><b><span>02</span>Plan</b><p>Scope, architecture, design and a clear fixed estimate.</p></div>
+          <div><b><span>03</span>Build</b><p>Iterative delivery with daily updates and weekly demos.</p></div>
+          <div><b><span>04</span>Launch &amp; support</b><p>Play / App Store or web release, monitoring and maintenance.</p></div>
+        </div>
+
+        <h3 class="pax-h rv">The Paxees team</h3>
+        <div class="team rv" aria-label="Paxees team">
+          <div class="mate"><img src="assets/img/testimonials/zeeshan.jpg" alt=""><div><b>Mohammad Zeeshan</b><span>Founder · Lead Mobile &amp; AI Engineer</span></div></div>
+          <div class="mate"><img src="assets/img/testimonials/farhan.jpeg" alt=""><div><b>Sheikh Farhan Saeed</b><span>Project Manager / Developer</span></div></div>
+          <div class="mate"><img src="assets/img/testimonials/abdullah.jpg" alt=""><div><b>Muhammad Abdullah</b><span>Android / Node.js Developer</span></div></div>
+          <div class="mate"><img src="assets/img/testimonials/arif.jpeg" alt=""><div><b>Arif Jawed</b><span>Project Manager</span></div></div>
+          <div class="mate"><img src="assets/img/testimonials/ossaid.jpg" alt=""><div><b>Ossaid Ahmed</b><span>Front-End &amp; Graphics</span></div></div>
+        </div>
+
+        <div class="pax-cta rv">
+          <div><b>Have an app or website idea?</b><span>Paxees takes on a few client projects at a time, with fixed estimates and daily updates.</span></div>
+          <div class="pax-cta-btns"><a class="btn btn-primary" href="#contact" data-topic="A mobile app project">Start a project</a><button class="btn btn-ghost" data-filter-jump="freelance">See all client work</button></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================== SKILLS ============================== -->
-    <section id="skills" style="background:var(--bg-2)">
+    <section id="skills">
       <div class="wrap">
         <div class="sec-head rv">
           <span class="kicker">Skills</span>
@@ -638,7 +730,7 @@
     </section>
 
     <!-- ============================== SERVICES ============================== -->
-    <section id="services">
+    <section id="services" style="background:var(--bg-2)">
       <div class="wrap">
         <div class="sec-head rv">
           <span class="kicker">Services</span>
@@ -652,23 +744,11 @@
           <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><h3>Architecture &amp; consulting</h3><p>Solution and network architecture, code reviews and modernisation plans, explained so non-technical leaders can follow.</p></div>
           <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Support &amp; maintenance</h3><p>Remote support, store-release management, crash triage (Crashlytics) and long-term upkeep of live apps.</p></div>
         </div>
-        <div class="process rv">
-          <div><b><span>01</span>Discover</b><p>A call to understand goals, users and constraints.</p></div>
-          <div><b><span>02</span>Plan</b><p>Scope, architecture and a clear estimate.</p></div>
-          <div><b><span>03</span>Build</b><p>Iterative delivery with daily updates and demos.</p></div>
-          <div><b><span>04</span>Launch &amp; support</b><p>Store or web release, monitoring and maintenance.</p></div>
-        </div>
-        <div class="team rv" aria-label="Collaborators">
-          <div class="mate"><img src="assets/img/testimonials/farhan.jpeg" alt=""><div><b>Sheikh Farhan Saeed</b><span>Project Manager / Developer</span></div></div>
-          <div class="mate"><img src="assets/img/testimonials/abdullah.jpg" alt=""><div><b>Muhammad Abdullah</b><span>Android / Node.js Developer</span></div></div>
-          <div class="mate"><img src="assets/img/testimonials/arif.jpeg" alt=""><div><b>Arif Jawed</b><span>Project Manager</span></div></div>
-          <div class="mate"><img src="assets/img/testimonials/ossaid.jpg" alt=""><div><b>Ossaid Ahmed</b><span>Front-End &amp; Graphics</span></div></div>
-        </div>
       </div>
     </section>
 
     <!-- ============================== CONTACT ============================== -->
-    <section id="contact" style="background:var(--bg-2)">
+    <section id="contact">
       <div class="wrap">
         <div class="sec-head rv">
           <span class="kicker">Contact</span>
@@ -716,7 +796,7 @@
 
   <footer>
     <div class="wrap foot">
-      <span>© <span id="yr">2026</span> Mohammad Zeeshan · Paxees</span>
+      <span>© <span id="yr">2026</span> Mohammad Zeeshan · <a href="#paxees">Paxees studio</a></span>
       <span><a href="#work">Work</a> · <a href="assets/docs/Mohammad-Zeeshan-Portfolio.pdf" target="_blank" rel="noopener">CV (PDF)</a> · <a href="https://www.linkedin.com/in/xeeshansami/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/xeeshansami" target="_blank" rel="noopener">GitHub</a></span>
     </div>
   </footer>

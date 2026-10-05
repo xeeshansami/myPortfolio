@@ -11,7 +11,7 @@
             internal  → Enterprise / internal deployment
             delivered → Delivered to client
             private   → Private repository
-   cats:    sbp | hbl | jsbank | business | commerce | education | healthcare | media | web | tools
+   cats:    sbp | hbl | jsbank | dusky | freelance | business | commerce | education | healthcare | media | web | tools
 ============================================================ */
 const PROJECTS = [
   {
@@ -97,8 +97,8 @@ const PROJECTS = [
     id: 'therapyhome',
     title: 'Therapy Home — Special Education School',
     sub: 'School management for a special-needs school · Nagan Chowrangi, Karachi',
-    org: 'Client project',
-    cats: ['education', 'healthcare', 'web'],
+    org: 'Paxees · Client project',
+    cats: ['freelance', 'education', 'healthcare', 'web'],
     tag: 'EdTech · Special Needs',
     status: 'live',
     cover: 'assets/img/portfolio/therapyhome/cover.jpg',
@@ -122,8 +122,8 @@ const PROJECTS = [
     id: 'sareena',
     title: 'Sareena PartHub — Mobile Parts ERP & Marketplace',
     sub: 'Multi-shop ERP · Web panel · Flutter app · Consumer marketplace',
-    org: 'Client project',
-    cats: ['business', 'commerce', 'web'],
+    org: 'Paxees · Client project',
+    cats: ['freelance', 'business', 'commerce', 'web'],
     tag: 'Retail ERP · Marketplace',
     status: 'live',
     cover: 'assets/img/portfolio/sareena/cover.jpg',
@@ -228,41 +228,41 @@ const PROJECTS = [
   },
 
   /* ---------- Client apps ---------- */
-  L('realtorscrm', 'Realtors CRM', 'Flutter iOS / Android application', 'Client project', 'business', 'CRM', 'live', 'realtorscrm/image1.jpeg', ['realtorscrm/realtorscrm.jpeg'],
+  L('realtorscrm', 'Realtors CRM', 'Flutter iOS / Android application', 'Paxees · Client project', 'freelance business', 'CRM', 'live', 'realtorscrm/image1.jpeg', ['realtorscrm/realtorscrm.jpeg'],
     'CRM application for real-estate professionals.', ['Flutter'], { play: 'https://play.google.com/store/apps/details?id=com.amr.realtorscrm' }),
-  L('bidfeed', 'Bidfeed Home', 'Bidfeed Home mobile application', 'Client project', 'commerce', 'Business', 'live', 'bidfeed/Bidfeed.PNG', [],
+  L('bidfeed', 'Bidfeed Home', 'Bidfeed Home mobile application', 'Paxees · Client project', 'freelance commerce', 'Business', 'live', 'bidfeed/Bidfeed.PNG', [],
     'Mobile ordering application for Bidfood customers.', ['Android'], { play: 'https://play.google.com/store/apps/details?id=com.retailak.bidfoods' }),
-  L('ags', 'AGS Multi Order Booking', 'Pharmacy app', 'Client project', 'business healthcare', 'Pharmacy', 'live', 'ags/ags.PNG', ['ags/agsflow.PNG'],
+  L('ags', 'AGS Multi Order Booking', 'Pharmacy app', 'Paxees · Client project', 'freelance business healthcare', 'Pharmacy', 'live', 'ags/ags.PNG', ['ags/agsflow.PNG'],
     'Multi order-booking app for a pharmaceutical distributor.', ['Android'], { play: 'https://play.google.com/store/apps/details?id=com.agsadil.agssalesandroidclientorderdocter' }),
-  L('offtheschool', 'Off The School', 'Flutter iOS / Android application', 'Client project', 'education', 'Education', 'delivered', 'offtheschool/image1.jpeg', ['offtheschool/offtheschool.jpeg'],
+  L('offtheschool', 'Off The School', 'Flutter iOS / Android application', 'Paxees · Client project', 'freelance education', 'Education', 'delivered', 'offtheschool/image1.jpeg', ['offtheschool/offtheschool.jpeg'],
     'Education application for iOS and Android.', ['Flutter']),
-  L('dawngroup', 'Dawn Group', 'Flutter iOS / Android application', 'Client project', 'business', 'Business', 'delivered', 'dawngroup/image10.jpeg', ['dawngroup/dawngroup.jpeg'],
+  L('dawngroup', 'Dawn Group', 'Flutter iOS / Android application', 'Paxees · Client project', 'freelance business', 'Business', 'delivered', 'dawngroup/image10.jpeg', ['dawngroup/dawngroup.jpeg'],
     'Business application for iOS and Android.', ['Flutter']),
-  L('tengram', 'Tengram', 'Coupon app', 'Client project', 'commerce', 'Coupons', 'delivered', 'tengram/tengram.png', ['tengram/tengramflow.png'],
+  L('tengram', 'Tengram', 'Coupon app', 'Paxees · Client project', 'freelance commerce', 'Coupons', 'delivered', 'tengram/tengram.png', ['tengram/tengramflow.png'],
     'Coupon and deals mobile app.', ['Android']),
-  L('tcc', 'The Clone Conservatory', 'Plants e-commerce app', 'Client project', 'commerce', 'E-Commerce', 'delivered', 'tcc/tcc.png', ['tcc/tccdarkflow.jpeg'],
+  L('tcc', 'The Clone Conservatory', 'Plants e-commerce app', 'Paxees · Client project', 'freelance commerce', 'E-Commerce', 'delivered', 'tcc/tcc.png', ['tcc/tccdarkflow.jpeg'],
     'E-commerce app for a plants store.', ['Mobile']),
-  L('youniform', 'YouniForm', 'E-commerce app', 'Client project', 'commerce', 'E-Commerce', 'delivered', 'youniform/youniform.JPEG', ['youniform/youniform.png'],
+  L('youniform', 'YouniForm', 'School-uniform e-commerce app', 'Dusky Solutions', 'dusky commerce', 'E-Commerce', 'delivered', 'youniform/youniform.JPEG', ['youniform/youniform.png'],
     'E-commerce mobile app.', ['Android']),
-  L('urdunovels', 'UrduNovels', 'Novels app', 'Client project', 'media', 'Reading', 'delivered', 'UrduNovels/urduNovels.JPEG', ['UrduNovels/urduNovels.png'],
+  L('urdunovels', 'UrduNovels', 'Novels app', 'Paxees · Client project', 'freelance media', 'Reading', 'delivered', 'UrduNovels/urduNovels.JPEG', ['UrduNovels/urduNovels.png'],
     'Urdu novels reading app.', ['Android']),
-  L('gatak', 'جاتك الفزعه', 'E-commerce service app', 'Client project', 'commerce', 'E-Commerce', 'delivered', 'gatak/screen-0.jpg', ['gatak/Gatak.png'],
+  L('gatak', 'جاتك الفزعه — Gatak Alfazaa', 'Arabic e-commerce & services app', 'Dusky Solutions', 'dusky commerce', 'E-Commerce', 'delivered', 'gatak/screen-0.jpg', ['gatak/Gatak.png'],
     'Arabic (RTL) e-commerce service app.', ['Android', 'RTL']),
-  L('khutalkhair', 'خطى الخير', 'E-commerce service app', 'Client project', 'commerce', 'E-Commerce', 'delivered', 'khutalkhair/zee1.png', ['khutalkhair/khuatlkhair.png'],
+  L('khutalkhair', 'خطى الخير — Khuta Alkhair', 'Arabic e-commerce & services app', 'Dusky Solutions', 'dusky commerce', 'E-Commerce', 'delivered', 'khutalkhair/zee1.png', ['khutalkhair/khuatlkhair.png'],
     'Arabic (RTL) e-commerce service app.', ['Android', 'RTL']),
-  L('reliance', 'Reliance Engineering', 'Business app', 'Client project', 'business', 'Business', 'delivered', 'relainceEngineering/relainceEng.JPEG', ['relainceEngineering/relianceEng.png'],
+  L('reliance', 'Reliance Engineering', 'Business app', 'Paxees · Client project', 'freelance business', 'Business', 'delivered', 'relainceEngineering/relainceEng.JPEG', ['relainceEngineering/relianceEng.png'],
     'Business app for an engineering company.', ['Android']),
 
   /* ---------- Utility & media ---------- */
-  L('vpnx', 'VPNx', 'Tool app', 'Product', 'media', 'Tool', 'delivered', 'vpn/vpnapp.PNG', ['vpn/vpn.png'], 'VPN utility app.', ['Android']),
-  L('bihar', 'Bihar Land Records', 'बिहार भूमि · Khatian app', 'Product', 'media', 'Records', 'delivered', 'bihar/app.PNG', ['bihar/flow.PNG'], 'Land-records (Khatian) lookup app.', ['Android']),
-  L('videotor', 'Videotor Video Editor', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'Downloader2/app.PNG', ['Downloader2/flow.PNG'], 'Video editor app.', ['Android']),
-  L('hddownloader', 'All Video HD Downloader', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'Downloader3/app.PNG', ['Downloader3/flow.PNG'], 'HD video downloader app.', ['Android']),
-  L('primeflix', 'PrimeFlix', 'Movie app', 'Product', 'media', 'Movies', 'delivered', 'PrimeFlix/primeFlix.JPEG', ['PrimeFlix/primeFlix.png'], 'Movie app.', ['Android']),
-  L('mediaplayer', 'Media Player', 'Media app', 'Product', 'media', 'Media', 'delivered', 'mediaplayer/1.png', ['mediaplayer/mediaplayer.png'], 'Media player app.', ['Android']),
-  L('convertor', 'Convertor', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'convertor/2019_11_13_11_07_IMG_1541.JPG', ['convertor/convertor.png'], 'Media converter app.', ['Android']),
-  L('recorder', 'Call Recorder', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'recorder/Android splash.png', ['recorder/recoreder.png'], 'Call recorder app.', ['Android']),
-  L('mxdownloader', 'MX Video Downloader', 'Media tool app', 'Product', 'media', 'Media', 'delivered', 'Downloader/sp cahnge.jpg', ['Downloader/MX-Video-Downloder-workflow.jpg'], 'Video downloader app.', ['Android'])
+  L('vpnx', 'VPNx', 'Tool app', 'Paxees · Client project', 'freelance media', 'Tool', 'delivered', 'vpn/vpnapp.PNG', ['vpn/vpn.png'], 'VPN utility app.', ['Android']),
+  L('bihar', 'Bihar Land Records', 'बिहार भूमि · Khatian app', 'Paxees · Client project', 'freelance media', 'Records', 'delivered', 'bihar/app.PNG', ['bihar/flow.PNG'], 'Land-records (Khatian) lookup app.', ['Android']),
+  L('videotor', 'Videotor Video Editor', 'Media tool app', 'Paxees · Client project', 'freelance media', 'Media', 'delivered', 'Downloader2/app.PNG', ['Downloader2/flow.PNG'], 'Video editor app.', ['Android']),
+  L('hddownloader', 'All Video HD Downloader', 'Media tool app', 'Paxees · Client project', 'freelance media', 'Media', 'delivered', 'Downloader3/app.PNG', ['Downloader3/flow.PNG'], 'HD video downloader app.', ['Android']),
+  L('primeflix', 'PrimeFlix', 'Movie app', 'Paxees · Client project', 'freelance media', 'Movies', 'delivered', 'PrimeFlix/primeFlix.JPEG', ['PrimeFlix/primeFlix.png'], 'Movie app.', ['Android']),
+  L('mediaplayer', 'Media Player', 'Media app', 'Paxees · Client project', 'freelance media', 'Media', 'delivered', 'mediaplayer/1.png', ['mediaplayer/mediaplayer.png'], 'Media player app.', ['Android']),
+  L('convertor', 'Convertor', 'Media tool app', 'Paxees · Client project', 'freelance media', 'Media', 'delivered', 'convertor/2019_11_13_11_07_IMG_1541.JPG', ['convertor/convertor.png'], 'Media converter app.', ['Android']),
+  L('recorder', 'Call Recorder', 'Media tool app', 'Paxees · Client project', 'freelance media', 'Media', 'delivered', 'recorder/Android splash.png', ['recorder/recoreder.png'], 'Call recorder app.', ['Android']),
+  L('mxdownloader', 'MX Video Downloader', 'Media tool app', 'Paxees · Client project', 'freelance media', 'Media', 'delivered', 'Downloader/sp cahnge.jpg', ['Downloader/MX-Video-Downloder-workflow.jpg'], 'Video downloader app.', ['Android'])
 ];
 
 /* Compact helper for the shorter legacy entries (function declarations are hoisted). */
